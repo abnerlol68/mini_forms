@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang=es>
+<head>
+  <meta charset=UTF-8>
+  <meta http-equiv=X-UA-Compatible content=IE=edge>
+  <meta name=viewport content=width=device-width, initial-scale=1.0>
+  <link rel="shortcut icon" href="#" type="image/x-icon">
+  <title>Mini forms</title>
+  <link rel=stylesheet href=assets/css/main.css>
+</head>
+<body>
+  <header></header>
+  <main>
+    <form action="" method="POST" id="mainForm">
+      <div class="question" style="border: 2px solid #000;">
+        <input id="questionTitle" type="text" name="questionTitle" placeholder="Pregunta">
+        <select id="questionType">
+          <option value="text">Respuesta de texto</option>
+          <option value="radio">Opción múltiple</option>
+          <option value="check">Casillas</option>
+          <option value="select">Lista desplegable</option>
+        </select>
+        <div class="question_content" id="questionContent">
+          <p>Texto de respuesta</p>
+        </div>
+        <button disabled id="questionSave">Guardar</button>
+        <button disabled id="questionDelete">Eliminar</button>
+      </div>
+      <br>
+      <div class="question" style="border: 2px solid #000;">
+        <input type="text" name="questionTitle" id="questionTitle" placeholder="Pregunta">
+        <select id="questionType">
+          <option value="text">Respuesta de texto</option>
+          <option value="radio">Opción múltiple</option>
+          <option value="check">Casillas</option>
+          <option value="select">Lista desplegable</option>
+        </select>
+        <div class="question_content">
+          <input type="text" name="question" id="question">
+          <button disabled id=""></button>
+        </div>
+        <button disabled id="questionSave">Guardar</button>
+        <button disabled id="questionDelete">Eliminar</button>
+      </div>
+    </form>
+  </main>
+  <footer></footer>
+  <script src=js/main.js type="module"></script>
+</body>
+</html>
