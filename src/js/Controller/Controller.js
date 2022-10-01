@@ -2,50 +2,63 @@ import Question from '../Model/Question.js';
 
 export default class Controller {
   constructor() {
-    this.view = null;
-    this.questionSet = JSON.parse(localStorage.getItem('questions'));
-    if (!this.questionSet || this.questionSet.length < 1) {
-      this.questionSet = [new Question()];
-      this.currentQuestionId = 1;
+    this.questSet = JSON.parse(localStorage.getItem('quests'));
+    if (!this.questSet || this.questSet.length < 1) {
+      this.questSet = [new Question()];
+      this.currentQuestId = 1;
     } else {
-      this.currentQuestionId = this.questionSet[this.questionSet.length - 1].id + 1;
+      this.currentQuestId = this.questSet[this.questSet.length - 1].id + 1;
     }
   }
 
-  setView(view) {
-    this.view = view;
-  }
-
   save() {
-    localStorage.setItem('questions', JSON.stringify(this.questionSet));
+    localStorage.setItem('quests', JSON.stringify(this.questSet));
   }
 
-  getQuestions() {
-    return this.questionSet.map(question => ({...question}));
+  getQuests() {
+    return this.questSet.map(quest => ({...quest}));
   }
 
-  findQuestion(id) {
-    return this.questionSet.findIndex(question => question.id === id);
+  findQuest(id) {
+    return this.questSet.findIndex(quest => quest.id === id);
   }
 
-  updateQuestion(question) {
-    const index = this.findQuestion(question.id);
-    Object.assign(this.questionSet[index], question);
-    this.save();
+  updateQuest(quest) {
+    // const index = this.findQuest(quest.id);
+    // Object.assign(this.questSet[index], quest);
+    // this.save();
   }
 
-  addQuestion(title, type, responseChannel) {
-    const question = new Question(
-      this.currentQuestionId++, title, type, responseChannel
+  addQuest(title, type, ansSet) {
+    const quest = new Question(
+      this.currentQuestId++, title, type, ansSet
     );
-    this.questionSet.push(question);
+    this.questSet.push(quest);
     this.save();
-    return {...question};
+    return {...quest};
   }
 
-  removeQuestion(id) {
-    const index = this.findQuestion(id);
-    this.questionSet.splice(index, 1);
+  removeQuest(id) {
+    const index = this.findQuest(id);
+    this.questSet.splice(index, 1);
+    this.save();
+  }
+
+  updateQuestType(id, questType) {
+    const index = this.findQuest(id);
+    this.questSet[index].type = questType;
+    this.save();
+  }
+
+  addAnsSet(questId, answerOpt) {
+    const index = this.findQuest(questId);
+    this.questSet[index].ansSet = answerOpt;
+    this.save();
+  }
+
+  setAnsOpt(questId, ansOpt) {
+    const index = this.findQuest(questId);
+    this.questSet[index].ansSet.push(ansOpt);
     this.save();
   }
 }
