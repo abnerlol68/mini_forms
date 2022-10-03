@@ -132,7 +132,6 @@ export default class View {
       return opt;
     });
     
-    console.log(ansSetContainer);
     this.controller.addAnsSet(questId, ansOptSet);
   }
 
