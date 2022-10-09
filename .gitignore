@@ -310,6 +310,9 @@ fabric.properties
 # comment the following lines
 !.yarn/cache
 
+# Test
+src/Test/*
+
 # and uncomment the following lines
 # .pnp.*
 
