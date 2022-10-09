@@ -1,3 +1,4 @@
+import ProtoAnswer from '../Model/Base/ProtoAnswer.js';
 import Question from '../Model/Question.js';
 
 export default class View {
@@ -23,6 +24,26 @@ export default class View {
   removeQuest(id) {
     this.question.removeQuest(id);
     document.getElementById(id).remove();
+  }
+
+  updateQuest(id) {
+    const title = document.getElementById(`quest__title->${id}`).value;
+
+    const type = document.getElementById(`quest__type->${id}`).value;
+
+    const ansSetList = Array
+      .from(document.getElementById(`quest__ans-set->${id}`).children);
+
+    const ansSet = ansSetList
+      .filter(child => child.localName === 'input')
+      .map(ans => new ProtoAnswer(this.getElementId(ans.id), ans.value));
+
+    this.question.updateQuest(id, {
+      id,
+      title,
+      type,
+      ansSet: (type === 'text') ? ansSetList[0].innerText : ansSet
+    });
   }
 
   setAnsSet(questId, containerAux) {
@@ -75,7 +96,7 @@ export default class View {
     const questTitle = document.createElement('input');
     questTitle.type = 'text';
     questTitle.className = 'quest__title';
-    questTitle.id = `quest__type->${quest.id}`;
+    questTitle.id = `quest__title->${quest.id}`;
     questTitle.value = quest.title;
     
     const questType = document.createElement('select');
@@ -92,10 +113,11 @@ export default class View {
     const ansSetContainer = document.createElement('div');
     ansSetContainer.className = `quest__ans-set`;
     ansSetContainer.id = `quest__ans-set->${quest.id}`;
-    
-    if (questType.value !== 'text') {
-      this.setAnsSet(quest.id, ansSetContainer);
-    }
+  
+    if (questType.value === 'text') ansSetContainer.innerHTML = `
+      <p>${quest.ansSet}</p>
+    `;
+    if (questType.value !== 'text') this.setAnsSet(quest.id, ansSetContainer);
 
     questType.onchange = () => {
       this.question.updateQuest(quest.id, {
@@ -134,7 +156,7 @@ export default class View {
     btnSave.id = `quest__save->${quest.id}`;
     btnSave.innerText = 'Guardar';
     btnSave.title = 'Guardar Pregunta';
-    btnSave.onclick;
+    btnSave.onclick = () => this.updateQuest(quest.id);
   
     const btnRemove = document.createElement('button');
     btnRemove.className = 'quest__remove';
