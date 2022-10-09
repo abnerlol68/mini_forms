@@ -11,10 +11,6 @@ export default class Answer {
     }
   }
 
-  save() {
-    // ...
-  }
-
   getAnsSet() {
     return [...this.ansSet];
   }

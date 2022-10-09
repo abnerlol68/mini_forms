@@ -10,4 +10,5 @@ document.addEventListener('DOMContentLoaded', function () {
   question.addAns(1, 'Mujer');
 
   console.log(question.getQuestSet());
-})
+  console.log(question.getQuest(1).ansSet);
+});
