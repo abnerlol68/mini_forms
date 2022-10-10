@@ -1,4 +1,4 @@
-import Question from '../Model/Question.js';
+import Question from './Question.js';
 
 export default class Controller {
   constructor() {

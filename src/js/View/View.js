@@ -1,10 +1,15 @@
-import ProtoAnswer from '../Model/Base/ProtoAnswer.js';
-import Question from '../Model/Question.js';
+import MdlAnswer from '../Model/Answer.js';
 
 export default class View {
   constructor() {
-    this.question = new Question();
+    this.ctrl = null;
+    this.question = null;
     this.main = document.getElementsByTagName('main')[0];
+  }
+
+  setController(controller) {
+    this.ctrl = controller;
+    this.question = this.ctrl.question;
   }
 
   render() {
@@ -36,7 +41,7 @@ export default class View {
 
     const ansSet = ansSetList
       .filter(child => child.localName === 'input')
-      .map(ans => new ProtoAnswer(this.getElementId(ans.id), ans.value));
+      .map(ans => new MdlAnswer(this.getElementId(ans.id), ans.value));
 
     this.question.updateQuest(id, {
       id,
