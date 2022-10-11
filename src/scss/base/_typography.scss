@@ -1,0 +1,10 @@
+@use '../utils' as u;
+
+html {
+  font-size: 62.5%;
+  font-family: u.$font;
+}
+
+body {
+  font-size: 1.4rem;
+}

@@ -1,0 +1,84 @@
+@use '../utils' as u;
+
+.quest {
+  display: grid;
+  justify-items: center;
+  width: 76rem;
+  margin: 3.3rem 0;
+  padding: 2rem;
+  border-radius: 0.8rem;
+  background-color: u.$background-two;
+
+  &__title {
+    width: 40rem;
+    margin: 0 0 0.5rem -5.3rem;
+    grid-column-start: 1;
+    grid-column-end: 1;
+  }
+
+  &__type {
+    margin: 0 0 0.5rem;
+    grid-column-start: 2;
+    grid-column-end: 2;
+  }
+
+  &__ans-set {
+    width: 100%;
+    margin-bottom: 2.8rem;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-column-start: span;
+
+    &__ans-input {
+      margin: 1rem 0;
+      margin-right: 1rem;
+    }
+
+    &__ans-remove {
+      width: 3.6rem;
+      height: 3.6rem;
+      margin: 1rem 0;
+      border: 2px solid u.$text;
+      border-radius: 1rem;
+    }
+
+    & > p {
+      margin: 1rem 0 0.6rem;
+      border-bottom: 1px solid gray;
+    }
+  }
+
+  & > button {
+    text-transform: uppercase;
+    height: 3.6rem;
+    border-radius: 0.8rem;
+  }
+
+  &__new-ans {
+    width: 15.5rem;
+    justify-self: start;
+    margin-bottom: 2.8rem;
+    grid-column-start: span 2;
+  }
+
+  &__save {
+    width: 8rem;
+    margin-bottom: -3rem;
+    grid-column-start: 1;
+    grid-column-end: 1;
+  }
+
+  &__remove {
+    width: 8rem;
+    margin-bottom: -3rem;
+    grid-column-start: 2;
+    grid-column-end: 2;
+  }
+
+  &__add {
+    width: 8rem;
+    position: relative;
+    top: 6.5rem;
+    grid-column-start: span 2;
+  }
+}

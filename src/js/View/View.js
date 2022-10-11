@@ -62,8 +62,8 @@ export default class View {
   }
 
   removeAns(questId, ansId) {
-    document.getElementById(`ans-set__ans-input->${ansId}`).remove();
-    document.getElementById(`ans-set__ans-remove->${~nsId}`).remove();
+    document.getElementById(`quest__ans-set__ans-input->${ansId}`).remove();
+    document.getElementById(`quest__ans-set__ans-remove->${~nsId}`).remove();
     
     this.question.removeAns(questId, ansId);
   }
@@ -73,13 +73,13 @@ export default class View {
 
     const ansInput = document.createElement('input');
     ansInput.type = 'text';
-    ansInput.className = 'ans-set__ans-input';
-    ansInput.id = `ans-set__ans-input->${answer.id}`;
+    ansInput.className = 'quest__ans-set__ans-input';
+    ansInput.id = `quest__ans-set__ans-input->${answer.id}`;
     ansInput.value = answer.description;
 
     const btnRemoveAns = document.createElement('button');
-    btnRemoveAns.className = 'ans-set__ans-remove';
-    btnRemoveAns.id = `ans-set__ans-remove->${answer.id}`;
+    btnRemoveAns.className = 'quest__ans-set__ans-remove';
+    btnRemoveAns.id = `quest__ans-set__ans-remove->${answer.id}`;
     btnRemoveAns.innerText = ' X ';
     btnRemoveAns.onclick = () => {
       this.removeAns(questId, answer.id);
