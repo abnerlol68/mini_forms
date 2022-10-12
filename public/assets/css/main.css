@@ -56,11 +56,16 @@ input[type=text] {
 
 select {
   width: 18rem;
+  color: #FFF;
   text-align: center;
   text-transform: uppercase;
   background-color: #5fbae9;
   border: 1px solid #000;
   border-radius: 0.8rem;
+}
+
+select:hover {
+  cursor: pointer;
 }
 
 button {
@@ -84,7 +89,7 @@ button:hover {
 }
 .quest__title {
   width: 40rem;
-  margin: 0 0 0.5rem -5.3rem;
+  margin: 0 0 0.5rem -5rem;
   grid-column-start: 1;
   grid-column-end: 1;
 }

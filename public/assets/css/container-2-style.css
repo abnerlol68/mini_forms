@@ -1,0 +1,97 @@
+html {
+    font-family: Helvetica, Arial, sans-serif;
+    background-color: #5fbae9;
+  }
+  
+  body{
+    height: 100%;
+  }
+  
+  #header-ctn {
+    background-color: #fff;
+    position: auto;
+    height: 50px;
+    padding: 5px;
+    border-radius: 5px;
+  }
+  
+  #header-ctn #logo-itsoeh {
+    float: left;
+    margin-left: 5%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 22px;
+    text-decoration: none;
+    color: #000;
+  }
+
+  #hub{
+    /* color: #fff; */
+    background-color: #fea840;
+    padding: 4px;
+    border-radius: 10%;
+  }
+  
+  #header-ctn #menu {
+    height: 100%;
+  }
+  
+  #header-ctn #menu nav {
+    display: flex;
+    height: 100%;
+    justify-content: right;
+    align-items: center;
+    /* margin-right: 2%; */
+  }
+  
+  .underline {
+    margin: 5px;
+    text-decoration: none;
+    color: #000;
+    font-size: larger;
+    margin: 2.5% 15px 2% 15px;
+  }
+  
+  .underline:after {
+    display: block;
+    width: 0%;
+    height: 4px;
+    background-color: #56baed;
+    content: "";
+    transition: width 0.2s;
+  }
+  
+  .underline:hover {
+    color: #000;
+  }
+  
+  .underline:hover:after {
+    width: 100%;
+  }
+  
+  #usuario{
+    /* display: inline-block; */
+    margin-left: 20px;
+    border-radius: 20%;
+    border: 2px #cccccc solid;
+    height: 35px;
+    transition: border 0.5s;
+    transition-timing-function: ease-in;
+  }
+  
+  
+  #usuario:hover{
+    border: #56baed solid 2px;
+  }
+  
+  .content-page{
+    width: 100%;
+    height: 100%;
+  }
+  
+  .content-page iframe{
+    width: 100%;
+    height: 100%;
+  }

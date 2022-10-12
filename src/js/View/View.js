@@ -63,7 +63,7 @@ export default class View {
 
   removeAns(questId, ansId) {
     document.getElementById(`quest__ans-set__ans-input->${ansId}`).remove();
-    document.getElementById(`quest__ans-set__ans-remove->${~nsId}`).remove();
+    document.getElementById(`quest__ans-set__ans-remove->${ansId}`).remove();
     
     this.question.removeAns(questId, ansId);
   }

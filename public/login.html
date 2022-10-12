@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio de sesión</title>
+    <script src="../src/libs/jquery/jquery-3.6.1.min.js"></script>
+    <script src="./controller/js/login-validate.js"></script>
+    <link rel="stylesheet" href="../src/libs/icons/typicons.min.css">
+    <!--    <link href="./frontend/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">-->
+    <link rel="shortcut icon" href="./assets/img/icons8-wolf-32.png" type="image/x-icon">
+    <link rel="stylesheet" href="./assets/css/lg-style.css">
+    <script src="./view/js/view-password.js"></script>
+</head>
+
+<body>
+    <div id="msg-done">
+    </div>
+    <div class="wrapper fadeInDown">
+
+        <div id="formContent">
+
+            <!-- Icon -->
+            <div class="fadeIn first" id="img-logo">
+                <!-- <p id="circle"></p> -->
+                <img src="./assets/img/lobo-logo.svg" id="icon" alt="User Icon" />
+            </div>
+
+            <!-- Tabs Titles -->
+            <div id="Titulo">
+                <h2 class="active"> Inicio de Sesión </h2>
+                <br>
+            </div>
+
+            <!-- Login Form -->
+            <form method="post" action="#" id="formlg">
+
+                <div class="user-box">
+                    <input type="text" id="login" class="fadeIn second" pattern="[A-Za-z0-9_-]{1,15}" name="username" autocomplete="off">
+                    <label for="login" id="label-first" class="fadeIn lbs1"> Usuario </label><br>
+                </div>
+                <div class="user-box">
+                    <input type="password" id="password" class="fadeIn third"  pattern="[A-Za-z0-9_-]{1,15}" name="password">
+                    <label for="password" id="label-second" class="fadeIn lbs2"> Contraseña </label><br>
+                    <i id="eye" class="fadeIn lbs2 typcn typcn-eye" alt="ver" onclick="viewPass()" ></i>
+                    <!-- <img src="./assets/img/lobo-logo.svg-hide.png" id="eye" class="fadeIn lbs2" alt="ver" onclick="viewPass()"> -->
+                </div>
+                <a href="./main-forms.html"><input type="button" class="fadeIn fourth" value="Ingresar" id="btn-submit"></a>
+            </form>
+
+            <div id="alert-msg" class="fadeIn five" style="display: none">
+                <!-- <h2> Error </h2> -->
+                <i class="typcn typcn-warning"></i>
+                <!-- <img src="./assets/img/lobo-logo.svgwidth="14px"> -->
+                <p>&nbsp;El nombre de usario o la contraseña son incorrectos</p>
+            </div>
+
+            <!-- Remind Passowrd -->
+            <div id="formFooter">
+                <a class="underlineHover" href="#">¿Olvidaste tu contraseña?</a>
+            </div>
+
+        </div>
+    </div>
+    </div>
+    <!-- <./assets/img/lobo-logo.svgalt="itsoeh-logo"> -->
+</body>
+
+</html>

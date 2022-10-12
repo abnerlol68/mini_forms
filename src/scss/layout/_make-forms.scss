@@ -18,11 +18,16 @@ input[type=text] {
 
 select {
   width: 18rem;
+  color: u.$background-two;
   text-align: center;
   text-transform: uppercase;
   background-color: u.$background-one;
   border: 1px solid u.$text;
   border-radius: 0.8rem;
+}
+
+select:hover {
+  cursor: pointer;
 }
 
 button {
