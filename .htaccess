@@ -6,7 +6,7 @@ RewriteCond %{REQUEST_FILENAME} !-l
 RewriteRule ^(.*)$ index.php?url=$1 [L,QSA]
 
 # Disable Directory listing
-# Options -Indexes
+Options -Indexes
 
 # Access denial for sensitive files
 <Files ~ "\.(env|json|config.js|md|gitignore|gitattributes|lock)$">
@@ -15,4 +15,4 @@ RewriteRule ^(.*)$ index.php?url=$1 [L,QSA]
 </Files>
 
 # Disable dir listing
-# IndexIgnore *
+IndexIgnore *

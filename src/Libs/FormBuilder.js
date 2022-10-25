@@ -1,5 +1,5 @@
-import View from '../View/View.FormBuilder.js';
-import Controller from '../Controller/Controller.FormBuilder.js';
+import View from '../View/FormBuilder.js';
+import Controller from '../Controller/FormBuilder.js';
 
 document.addEventListener('DOMContentLoaded', function () {
   const controller = new Controller();
@@ -7,4 +7,4 @@ document.addEventListener('DOMContentLoaded', function () {
 
   view.setController(controller);
   view.render();
-})
+});

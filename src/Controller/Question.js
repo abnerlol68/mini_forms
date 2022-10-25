@@ -9,9 +9,7 @@ export default class Question {
       this.currentQuestId = 1;
       this.save();
     } else {
-      this.currentQuestId = (
-        this.questSet[this.questSet.length - 1].id + 1
-      );
+      this.currentQuestId = this.questSet[this.questSet.length - 1].id + 1;
     }
   }
 

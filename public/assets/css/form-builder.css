@@ -128,21 +128,23 @@ button:hover {
 }
 .quest__save {
   width: 8rem;
-  margin-bottom: -3rem;
+  margin-bottom: -1rem;
   grid-column-start: 1;
   grid-column-end: 1;
 }
 .quest__remove {
   width: 8rem;
-  margin-bottom: -3rem;
+  margin-bottom: -1rem;
   grid-column-start: 2;
   grid-column-end: 2;
 }
 .quest__add {
   width: 8rem;
   position: relative;
-  top: 6.5rem;
   grid-column-start: span 2;
+  text-transform: uppercase;
+  height: 3.6rem;
+  border-radius: 0.8rem;
 }
 
-/*# sourceMappingURL=main.css.map */
+/*# sourceMappingURL=form-builder.css.map */

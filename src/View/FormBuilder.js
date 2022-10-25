@@ -5,6 +5,7 @@ export default class View {
     this.ctrl = null;
     this.question = null;
     this.main = document.getElementsByTagName('main')[0];
+    this.questContainer = document.getElementById('quest-container');
   }
 
   setController(controller) {
@@ -15,12 +16,20 @@ export default class View {
   render() {
     const questSet = this.question.getQuestSet();
     questSet.forEach(quest => this.createQuest(quest));
+
+    const btnAdd = document.createElement('button');
+    btnAdd.className = 'quest__add';
+    btnAdd.innerText = 'Agregar';
+    btnAdd.title = 'Agregar Pregunta';
+    btnAdd.onclick = () => this.addQuest();
+
+    this.main.append(btnAdd);
   }
 
   getElementId(id) {
     return Number(id.split('->')[1]);
   }
-
+x
   addQuest(title, type, ansSet) {
     const quest = this.question.addQuest(title, type, ansSet);
     this.createQuest(quest);
@@ -170,23 +179,15 @@ export default class View {
     btnRemove.title = 'Eliminar Pregunta';
     btnRemove.onclick = () => this.removeQuest(quest.id);
   
-    const btnAdd = document.createElement('button');
-    btnAdd.className = 'quest__add';
-    btnAdd.id = `quest__add->${quest.id}`;
-    btnAdd.innerText = 'Agregar';
-    btnAdd.title = 'Agregar Pregunta';
-    btnAdd.onclick = () => this.addQuest();
-  
     questContent.append(
       questTitle,
       questType,
       ansSetContainer,
       btnNewAns,
       btnSave,
-      btnRemove,
-      btnAdd
+      btnRemove
     );
   
-    this.main.appendChild(questContent);  
+    this.questContainer.appendChild(questContent);  
   }
 }

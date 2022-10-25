@@ -11,6 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $statement->execute([
       'user_admin' => $_POST['username']
     ]);
+    
     if ($statement->rowCount() == 0) {
       $errMsg = "Invalid credentials.";
     } else {
