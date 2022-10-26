@@ -1,0 +1,13 @@
+{
+    "name": "itsoeh/miniforms",
+    "description": "System to generate and administrate surveys to graduates from itsoeh",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "Core\\": "src/Libs/core"
+        }
+    },
+    "require": {
+      "ext-pdo": "*"
+    }
+}

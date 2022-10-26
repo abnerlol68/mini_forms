@@ -1,40 +1,21 @@
 <?php
-  try {
-    session_start();
-    $uri = rtrim(isset($_GET['url']) ? $_GET['url'] : null, '/');
 
-    $address = [
-      'login' => constant('ROOT').'src/View/LoginAdmin.php',
-      'home' => constant('ROOT').'src/View/Home.php',
-      'requests' => constant('ROOT').'src/Libs/Requests.php',
-      'form_builder' => constant('ROOT').'src/View/FormBuilder.php',
-      'form_send' => constant('ROOT').'src/View/FormSend.php',
-      'form_preview' => constant('ROOT').'src/View/FormPreview.php',
-      'form_for_polled' => constant('ROOT').'src/View/FormForPolled.php',
-      'not_found' => constant('ROOT').'src/View/NotFound.php',
-    ];
-
-    if (!isset($_SESSION["user"])) {
-      require $address['login'];
-      return;
-    }
-  
-    // If uri is null, the request uri is point to home
-    if (!$uri) {
-      require $address['home'];
-      return;
-    }
-
-    // If the uri is not found in addresses, NotFound is pointed to
-    if (!$address[$uri]) {
-      require $address['not_found'];
-      return;
-    }
-  
-    // The request uri is point to address select
-    require $address[$uri];
-    return;
-  } catch (Exception $e) {
-    die($e->getMessage());
-  }
-?>
+session_start();
+// Cargamos el modulo autoload.php para que podamos usar
+// las clases que declaramos en el namespace adecuado
+require_once ROOT."vendor/autoload.php";
+// Comenzamos a usar la clase aplicación
+use Core\Application;
+// Creamos un objeto de la clase Application  y lo almacenamos en $app
+$app = new Application();
+// Creamos las rutas que deberá conocer el la aplicación
+$app->router->setRoutes('/login','LoginAdmin');
+$app->router->setRoutes('/home','Home');
+$app->router->setRoutes('/','Home');
+$app->router->setRoutes('/requests','Requests');
+$app->router->setRoutes('/form_builder','FormBuilder');
+$app->router->setRoutes('/form_send','FormSend');
+$app->router->setRoutes('/form_preview','FormPreview');
+$app->router->setRoutes('/form_for_polled','FormForPolled');
+// Ejecutamos la aplicación.
+$app->run();
