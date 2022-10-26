@@ -7,7 +7,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   if (empty($_POST['username']) || empty($_POST['password'])) {
     $errMsg = "Please fill all the fields.";
   } else {
-    $statement = $conn->prepare("SELECT user_admin, password_admin FROM admins WHERE user_admin = :user_admin");
+      $statement = $conn->prepare("SELECT user_admin, password_admin FROM admins WHERE user_admin = :user_admin");
     $statement->execute([
       'user_admin' => $_POST['username']
     ]);
@@ -40,8 +40,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="src/Libs/jquery/jquery-3.6.1.min.js"></script>
-  <link rel="stylesheet" href="src/Libs/icons/typicons.min.css">
-  <link rel="shortcut icon" href="./assets/img/icons8-wolf-32.png" type="image/x-icon">
+  <link rel="stylesheet" href="src/Libs/icons/font/typicons.css">
+  <link rel="shortcut icon" href="public/assets/img/icons8-wolf-32.png" type="image/x-icon">
   <title>Login Admin</title>
   <style>
     /* @import url("https://fonts.googleapis.com/css?family=Poppins"); */
@@ -439,6 +439,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </head>
 
 <body>
+
+<script>
+    function viewPass() {
+        const pwd = document.getElementById('password');
+        const eye = document.getElementById('eye');
+        $('#eye').css('color',(pwd.type == "password" ? '#56baed': '#dce8f1'))
+        // pwd.type == "password" ? ($('#eye').css('color','#56baed')) : ($('#eye').css('color','#dce8f1'));
+        pwd.type == "password" ? (pwd.type = 'text') : (pwd.type = 'password');
+    }
+</script>
+
   <div id="msg-done">
   </div>
   <div class="wrapper fadeInDown">
@@ -449,7 +460,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       <!-- Icon -->
       <div class="fadeIn first" id="img-logo">
         <!-- <p id="circle"></p> -->
-        <img src="./assets/img/lobo-logo.svg" id="icon" alt="User Icon" />
+        <img src="public/assets/img/lobo-logo.png" id="icon" alt="User Icon" />
       </div>
 
       <!-- Tabs Titles -->
@@ -459,7 +470,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       </div>
 
       <!-- Login Form -->
-      <form method="post" action="LoginAdmin.php" id="formlg">
+      <form method="post" action="#" id="formlg">
 
         <div class="user-box">
           <input type="text" id="login" class="fadeIn second" pattern="[A-Za-z0-9_-]{1,15}" name="username" autocomplete="off">
@@ -468,7 +479,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <div class="user-box">
           <input type="password" id="password" class="fadeIn third" pattern="[A-Za-z0-9_-]{1,15}" name="password">
           <label for="password" id="label-second" class="fadeIn lbs2"> Contraseña </label><br>
-          <!-- <i id="eye" class="fadeIn lbs2 typcn typcn-eye" alt="ver" onclick="viewPass()" ></i> -->
+           <i id="eye" class="fadeIn lbs2 typcn typcn-eye" alt="ver" onclick="viewPass()" style="color: #dce8f1"></i>
           <!-- <img src="./assets/img/lobo-logo.svg-hide.png" id="eye" class="fadeIn lbs2" alt="ver" onclick="viewPass()"> -->
         </div>
         <input type="submit" class="fadeIn fourth" value="Ingresar" id="btn-submit">
@@ -485,7 +496,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <p class="text-danger" style="color: red; margin-bottom: 10px;"><?= $errMsg ?></p>
       <?php endif ?>
     </div>
-  </div>
   </div>
 </body>
 
