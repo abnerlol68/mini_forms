@@ -12,6 +12,7 @@ $app = new Application();
 $app->router->setRoutes('/login','LoginAdmin');
 $app->router->setRoutes('/home','Home');
 $app->router->setRoutes('/','Home');
+$app->router->setRoutes('/forms','Forms');
 $app->router->setRoutes('/requests','Requests');
 $app->router->setRoutes('/form_builder','FormBuilder');
 $app->router->setRoutes('/form_send','FormSend');
