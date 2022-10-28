@@ -12,7 +12,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Builder Form</title>
   <link rel="stylesheet" href="<?= constant('URL') . 'public/assets/css/form-builder.css' ?>">
-  <script src="<?= constant('URL') . 'src/Libs/FormBuilder.js' ?>" type="module"></script>
+  <script src="<?= URL . 'src/App/FormBuilder.js' ?>" type="module"></script>
 </head>
 <body>
   <h2>Builder Form</h2>

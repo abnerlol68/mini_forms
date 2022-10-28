@@ -153,7 +153,7 @@
       margin-left: 50px;
     }
   </style>
-  <script src="<?= constant('URL') . 'src/Libs/Home.js' ?>" type="module">
+  <script src="<?= URL . 'src/App/Home.js' ?>" type="module">
   </script>
 </head>
 

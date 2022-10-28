@@ -6,7 +6,7 @@ export default class Controller {
   /* CRUD Forms */
 
   async requestForms() {
-    return await (await fetch('requests/?req=get_forms')).json();
+    return await (await fetch('request/?req=get_forms')).json();
   }
 
   async getFormSet() { return [... await this.formSet] }
@@ -20,7 +20,7 @@ export default class Controller {
   }
 
   async addForm(id, title, author) {
-    await fetch('requests/?req=add_form', {
+    await fetch('request/?req=add_form', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -30,7 +30,7 @@ export default class Controller {
   }
 
   async removeForm(id) {
-    await fetch('requests/?req=remove_form', {
+    await fetch('request/?req=remove_form', {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json'
@@ -40,7 +40,7 @@ export default class Controller {
   }
 
   async updateForm(id, title) {
-    await fetch('requests/?req=update_form', {
+    await fetch('request/?req=update_form', {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json'
