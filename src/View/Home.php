@@ -1,8 +1,5 @@
 <pre style="font-size: 1.1rem;">
   <?php
-  require_once 'src/Libs/Database.php';
-
-  $forms = $conn->query('SELECT * FROM forms');
   ?>
 </pre>
 
@@ -51,55 +48,67 @@
       width: 24rem;
       height: 24rem;
       margin: 2rem;
-      padding-top: 1rem;
       display: grid;
       justify-items: center;
       align-content: space-around;
       background-color: #FFF;
       border: 2px solid #000;
-      color: #000;
-      text-decoration: none;
     }
 
-    .box-form:hover {
-      cursor: pointer;
+    .box-form__goto {
+      width: 6.4rem;
+      height: 6.4rem;
+      background-repeat: no-repeat;
+      background-color: transparent;
+      background-image: url("src/img/icon-form.png");
     }
 
-    .box-form>img:hover {
+    .box-form__goto:hover {
       filter: invert(10%);
     }
 
     .box-form__title {
-      height: 4rem;
+    }
+
+    .box-form__remove {
+      width: 3rem;
+      height: 3rem;
+      border: none;
+      background-size: 2.8rem;
+      background-repeat: no-repeat;
+      background-color: transparent;
+      background-image: url("src/img/remove.png");
+    }
+
+    .box-form__remove:hover {
+      background-image: url("src/img/remove-hover.png");
+    }
+
+    .new-form {
       display: flex;
       justify-content: center;
-      align-items: center;
-      width: inherit;
-      font-size: 1.4rem;
-      text-overflow: clip;
+      background-image: url('src/img/add.png');
+      background-repeat: no-repeat;
+      background-position: center 6rem;
     }
 
-    /* .box-form__title>img {
-      padding: 0.5rem;
-      position: relative;
-      bottom: 0.2rem;
-      left: 5.5rem;
+    .new-form:hover {
+      background-image: url('src/img/add-hover.png');
     }
 
-    .box-form__title>img:hover {
-      cursor: pointer;
-      background-color: rgb(192, 192, 192);
-      border-radius: 5rem;
-    } */
+    .new-form__title {
+      margin-bottom: 3rem;
+      align-self: flex-end;
+    }
 
-    .new-form img {
+    /* .new-form img {
       position: relative;
       top: 1.5rem;
     }
 
     .new-form img:hover {
       filter: invert(40%);
-    }
+    } */
 
     .btn-menu {
       width: 4rem;
@@ -158,23 +167,9 @@
 </head>
 
 <body>
+  <p id="url" style="display: none;"><?= URL ?></p>
+  <p id="user" style="display: none;"><?= $_SESSION["user"]["user_admin"] ?></p>
   <main>
-    <?php foreach ($forms as $form) : ?>
-      <a class="box-form" href="<?= constant('URL') . 'form_builder/?id=' . $form['id_form'] ?>">
-        <img src="public/assets/img/icon-form.png">
-        <span class="box-form__title">
-          <?= $form['title_form'] ?>
-          <!-- <img src="public/assets/img/icon-more.png"> -->
-        </span>
-      </a>
-    <?php endforeach ?>
-    <!-- New Form -->
-    <a class="box-form new-form" href="#">
-      <img src="public/assets//img/icon-plus.png">
-      <span class="box-form__title">
-        Nuevo Formulario
-      </span>
-    </a>
   </main>
 </body>
 

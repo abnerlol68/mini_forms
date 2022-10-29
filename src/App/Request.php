@@ -22,12 +22,15 @@ class Request {
   
     if ($_SERVER['REQUEST_METHOD'] == 'POST' && $_GET['req'] == 'add_form') {
       $content_req = json_decode(file_get_contents('php://input'), true);
-      $stm = $this->conn->prepare('INSERT INTO forms VALUES (:id, :title, :author)');
+      $stm = $this->conn->prepare(
+        'INSERT INTO forms (title_form, user_admin) VALUES (:title, :author)'
+      );
       $stm->execute([
-        'id' => $content_req['id'],
         'title' => $content_req['title'],
         'author' => $content_req['author'],
       ]);
+      $last_form = [...$this->conn->query('SELECT * FROM forms ORDER BY id_form DESC LIMIT 1')][0];
+      echo json_encode($last_form);
       http_response_code(201);
       return;
     }

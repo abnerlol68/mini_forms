@@ -1,5 +1,7 @@
 <?php
-require_once 'src/Libs/Database.php';
+use App\Database;
+$db = new Database();
+$conn = $db->get_conn();
 
 $errMsg = null;
 

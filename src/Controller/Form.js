@@ -6,7 +6,7 @@ export default class Controller {
   /* CRUD Forms */
 
   async requestForms() {
-    return await (await fetch('request/?req=get_forms')).json();
+    return fetch('request/?req=get_forms').then(forms => forms.json());
   }
 
   async getFormSet() { return [... await this.formSet] }
@@ -19,14 +19,14 @@ export default class Controller {
     return ( await this.formSet ).find(form => form.id_form === id);
   }
 
-  async addForm(id, title, author) {
-    await fetch('request/?req=add_form', {
+  async addForm(title, author) {
+    return fetch('request/?req=add_form', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ id, title, author })
-    });
+      body: JSON.stringify({ title, author })
+    }).then(lastForm => lastForm.json());
   }
 
   async removeForm(id) {
