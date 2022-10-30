@@ -1,103 +1,103 @@
-import MdlQuestion from '../Model/Question.js';
-import MdlAnswer from '../Model/Answer.js';
-
 export default class Question {
   constructor() {
-    this.questSet = JSON.parse(localStorage.getItem('quests'));
-    if (!this.questSet || this.questSet.length < 1) {
-      this.questSet = [new MdlQuestion()];
-      this.currentQuestId = 1;
-      this.save();
-    } else {
-      this.currentQuestId = this.questSet[this.questSet.length - 1].id + 1;
-    }
-  }
-
-  save() {
-    localStorage.setItem('quests', JSON.stringify(this.questSet));
+    this.url = document.getElementById('url').innerText;
+    this.questSet = this.requestQuests();
   }
 
   /* CRUD Question */
 
-  getQuestSet() {
-    return [...this.questSet];
+  async requestQuests() {
+    return fetch(`${this.url}request/?req=get_quests`)
+      .then(quests => quests.json());
   }
 
-  getQuestIndex(id) {
-    return this.questSet.findIndex(quest => quest.id === id);
+  async getQuestSet() { return [... await this.questSet] }
+
+  async getQuestIndex(id) {
+    return (await this.questSet)
+      .findIndex(quest => quest.id_question === id);
   }
 
-  getQuest(id) {
-    return this.questSet.find(quest => quest.id === id);
+  async getQuest(id) {
+    return (await this.questSet)
+      .find(quest => quest.id_question === id);
   }
 
-  addQuest(title, type, ansSet) {
-    const quest = 
-      new MdlQuestion(this.currentQuestId++, title, type, ansSet);
-    this.questSet.push(quest);
-    this.save();
-    return {...quest};
+  // Soon the id will not be passed since from the DB it is auto-increment
+  async addQuest(id, title, type, idForm) {
+    return fetch(`${this.url}request/?req=add_quest`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ id, title, type, idForm })
+    }).then(quest => quest.text());
   }
 
-  removeQuest(id) {
-    const questIndex = this.getQuestIndex(id);
-    this.questSet.splice(questIndex, 1);
-    this.save();
+  removeQuest(id, idForm) {
+    fetch(`${this.url}request/?req=remove_quest`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ id, idForm })
+    });
   }
 
-  updateQuest(id, quest) {
-    const questIndex = this.getQuestIndex(id);
-    this.questSet[questIndex] = 
-      new MdlQuestion(quest.id, quest.title, quest.type, quest.ansSet);
-    this.save();
+  updateQuest(id, idForm, title, type) {
+    fetch(`${this.url}request/?req=update_quest`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ id, idForm, title, type })
+    });
   }
 
-  /* CRUD Answer */
+  // /* CRUD Options */
 
-  getAnsSet(questId) {
-    return [...this.getQuest(questId).ansSet];
+  async getOptSet(questId) {
+    return fetch(`${this.url}request/?req=get_options&quest=${questId}`)
+      .then(quests => quests.json());
   }
 
-  getAnsIndex(questId, ansId) {
-    const quesIndex = this.getQuestIndex(questId);
-    return this.questSet[quesIndex].ansSet
-      .findIndex(ans => ans.id === ansId);
+  async getOptIndex(questId, optId) {
+    return [...await this.getOptSet(questId)]
+      .findIndex(opt => opt.id_option === optId);
   }
 
-  /**
-   * 
-   * @param {*} questId 
-   * @param {text} ansSet - [text|answers]
-   */
-  setAnsSet(questId, ansSet) {
-    const questIndex = this.getQuestIndex(questId);
-
-    if (ansSet === 'text')
-      this.questSet[questIndex].ansSet = 'Texto en respuesta de la pregunta';
-
-    if (ansSet === 'answers')
-      this.questSet[questIndex].ansSet = [new MdlAnswer()];
-
-    this.save();
+  async getOpt(questId, optId) {
+    return [...await this.getOptSet(questId)]
+      .find(opt => opt.id_option === optId);
   }
 
-  getLastAnsId(questId) {
-    return Math.max(...this.getAnsSet(questId).map(ans => ans.id));
+  async addAns(desc, questId) {
+    return fetch(`${this.url}request/?req=add_option`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ desc, questId })
+    }).then(opt => opt.json());
   }
 
-  addAns(questId, desc) {
-    const answer = new 
-      MdlAnswer(this.getLastAnsId(questId) + 1, desc);
-    const questIndex = this.getQuestIndex(questId);
-    this.questSet[questIndex].ansSet.push(answer);
-    this.save();
-    return {...answer};
+  removeOpt(questId, optId) {
+    fetch(`${this.url}request/?req=remove_option`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ questId, optId })
+    });
   }
 
-  removeAns(questId, ansId) {
-    const questIndex = this.getQuestIndex(questId);
-    const ansIndex = this.getAnsIndex(questId, ansId);
-    this.questSet[questIndex].ansSet.splice(ansIndex, 1);
-    this.save();
+  updateOpt(optId, desc, questId) {
+    fetch(`${this.url}request/?req=update_option`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ optId, desc, questId })
+    });
   }
 }

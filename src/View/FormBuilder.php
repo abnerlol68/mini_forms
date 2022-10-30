@@ -1,6 +1,5 @@
 <pre>
   <?php
-    
   ?>
 </pre>
 
@@ -15,7 +14,9 @@
   <script src="<?= URL . 'src/App/FormBuilder.js' ?>" type="module"></script>
 </head>
 <body>
-  <h2>Builder Form</h2>
+  <p id="url" style="display: none;"><?= URL ?></p>
+  <p id="user" style="display: none;"><?= $_SESSION['user']['user_admin'] ?></p>
+  <p id="form_id" style="display: none;"><?= $_GET['form_id'] ?></p>
   <main>
     <div class="quest-container" id="quest-container"></div>
   </main>
