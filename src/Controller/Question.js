@@ -23,15 +23,14 @@ export default class Question {
       .find(quest => quest.id_question === id);
   }
 
-  // Soon the id will not be passed since from the DB it is auto-increment
-  async addQuest(id, title, type, idForm) {
+  async addQuest(title, type, idForm) {
     return fetch(`${this.url}request/?req=add_quest`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ id, title, type, idForm })
-    }).then(quest => quest.text());
+      body: JSON.stringify({ title, type, idForm })
+    }).then(quest => quest.json());
   }
 
   removeQuest(id, idForm) {
@@ -71,7 +70,7 @@ export default class Question {
       .find(opt => opt.id_option === optId);
   }
 
-  async addAns(desc, questId) {
+  async addOpt(desc, questId) {
     return fetch(`${this.url}request/?req=add_option`, {
       method: 'POST',
       headers: {
@@ -83,6 +82,16 @@ export default class Question {
 
   removeOpt(questId, optId) {
     fetch(`${this.url}request/?req=remove_option`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ questId, optId })
+    });
+  }
+
+  removeOptSet(questId, optId) {
+    fetch(`${this.url}request/?req=remove_option-set`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json'

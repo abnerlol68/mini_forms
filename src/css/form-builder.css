@@ -93,25 +93,25 @@ button:hover {
   grid-column-start: 2;
   grid-column-end: 2;
 }
-.quest__ans-set {
+.quest__opt-set {
   width: 100%;
   margin-bottom: 2.8rem;
   display: grid;
   grid-template-columns: 2fr 1fr;
   grid-column-start: span;
 }
-.quest__ans-set__ans-input {
+.quest__opt-set__opt-input {
   margin: 1rem 0;
   margin-right: 1rem;
 }
-.quest__ans-set__ans-remove {
+.quest__opt-set__opt-remove {
   width: 3.6rem;
   height: 3.6rem;
   margin: 1rem 0;
   border: 2px solid #000;
   border-radius: 1rem;
 }
-.quest__ans-set > p {
+.quest__opt-set > p {
   margin: 1rem 0 0.6rem;
   border-bottom: 1px solid gray;
 }
@@ -120,7 +120,7 @@ button:hover {
   height: 3.6rem;
   border-radius: 0.8rem;
 }
-.quest__new-ans {
+.quest__new-opt {
   width: 15.5rem;
   justify-self: start;
   margin-bottom: 2.8rem;

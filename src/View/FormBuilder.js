@@ -1,27 +1,24 @@
-import MdlAnswer from '../Model/Answer.js';
+import Controller from '../Controller/FormBuilder.js';
 
 export default class View {
   constructor() {
-    this.ctrl = null;
-    this.question = null;
+    this.ctrl = new Controller();
+    this.ctrlQuest = this.ctrl.question;
     this.main = document.getElementsByTagName('main')[0];
     this.questContainer = document.getElementById('quest-container');
   }
 
-  setController(controller) {
-    this.ctrl = controller;
-    this.question = this.ctrl.question;
-  }
+  async render() {
+    const questions = await this.ctrlQuest.getQuestSet();
+    questions.forEach(quest => this.createQuest(quest));
 
-  render() {
-    const questSet = this.question.getQuestSet();
-    questSet.forEach(quest => this.createQuest(quest));
+    const idForm = document.getElementById('form_id').innerText;
 
     const btnAdd = document.createElement('button');
     btnAdd.className = 'quest__add';
     btnAdd.innerText = 'Agregar';
     btnAdd.title = 'Agregar Pregunta';
-    btnAdd.onclick = () => this.addQuest();
+    btnAdd.onclick = () => this.addQuest('Pregunta', 'text', idForm);
 
     this.main.append(btnAdd);
   }
@@ -29,165 +26,152 @@ export default class View {
   getElementId(id) {
     return Number(id.split('->')[1]);
   }
-x
-  addQuest(title, type, ansSet) {
-    const quest = this.question.addQuest(title, type, ansSet);
-    this.createQuest(quest);
-  }
 
-  removeQuest(id) {
-    this.question.removeQuest(id);
-    document.getElementById(id).remove();
-  }
+  /*==== CRUD Questions ====*/
 
-  updateQuest(id) {
-    const title = document.getElementById(`quest__title->${id}`).value;
-
-    const type = document.getElementById(`quest__type->${id}`).value;
-
-    const ansSetList = Array
-      .from(document.getElementById(`quest__ans-set->${id}`).children);
-
-    const ansSet = ansSetList
-      .filter(child => child.localName === 'input')
-      .map(ans => new MdlAnswer(this.getElementId(ans.id), ans.value));
-
-    this.question.updateQuest(id, {
-      id,
-      title,
-      type,
-      ansSet: (type === 'text') ? ansSetList[0].innerText : ansSet
-    });
-  }
-
-  setAnsSet(questId, containerAux) {
-    const ansSet = this.question.getQuest(questId).ansSet;
-    ansSet.forEach(ans => this.createAns(questId, ans, containerAux));
-  }
-
-  addAns(questId, desc) {
-    const ans = this.question.addAns(questId, desc);
-    this.createAns(questId, ans);
-  }
-
-  removeAns(questId, ansId) {
-    document.getElementById(`quest__ans-set__ans-input->${ansId}`).remove();
-    document.getElementById(`quest__ans-set__ans-remove->${~nsId}`).remove();
-    
-    this.question.removeAns(questId, ansId);
-  }
-
-  createAns(questId, answer, containerAux) {
-    const container = document.getElementById(`quest__ans-set->${questId}`);
-
-    const ansInput = document.createElement('input');
-    ansInput.type = 'text';
-    ansInput.className = 'quest__ans-set__ans-input';
-    ansInput.id = `quest__ans-set__ans-input->${answer.id}`;
-    ansInput.value = answer.description;
-
-    const btnRemoveAns = document.createElement('button');
-    btnRemoveAns.className = 'quest__ans-set__ans-remove';
-    btnRemoveAns.id = `quest__ans-set__ans-remove->${answer.id}`;
-    btnRemoveAns.innerText = ' X ';
-    btnRemoveAns.onclick = () => {
-      this.removeAns(questId, answer.id);
-    }
-
-    if (!container) {
-      containerAux.append(ansInput, btnRemoveAns);
-      return;
-    }
-
-    container.append(ansInput, btnRemoveAns);
-  }
-  
   createQuest(quest) {
     const questContent = document.createElement('div');
     questContent.className = 'quest';
-    questContent.id = quest.id;
-    
+    questContent.id = quest.id_question;
+
     const questTitle = document.createElement('input');
     questTitle.type = 'text';
     questTitle.className = 'quest__title';
-    questTitle.id = `quest__title->${quest.id}`;
-    questTitle.value = quest.title;
-    
+    questTitle.id = `quest__title->${quest.id_question}`;
+    questTitle.value = quest.description_question;
+    questTitle.onchange = () => {
+      this.updateQuest(quest.id_question, quest.id_form);
+    }
+
     const questType = document.createElement('select');
     questType.className = 'quest__type';
-    questType.id = `quest__type->${quest.id}`;
+    questType.id = `quest__type->${quest.id_question}`;
     questType.innerHTML = `
       <option value="text">Respuesta de texto</option>
       <option value="radio">Opción Multiple</option>
       <option value="checkbox">Opciones de casillas</option>
       <option value="select">Lista desplegable</option>
     `;
-    questType.value = quest.type;
-  
-    const ansSetContainer = document.createElement('div');
-    ansSetContainer.className = `quest__ans-set`;
-    ansSetContainer.id = `quest__ans-set->${quest.id}`;
-  
-    if (questType.value === 'text') ansSetContainer.innerHTML = `
-      <p>${quest.ansSet}</p>
-    `;
-    if (questType.value !== 'text') this.setAnsSet(quest.id, ansSetContainer);
-
+    questType.value = quest.type_question;
     questType.onchange = () => {
-      this.question.updateQuest(quest.id, {
-        id: quest.id, 
-        title: quest.title, 
-        type: questType.value
-      });
+      this.updateQuest(quest.id_question, quest.id_form);
+    }
 
-      document.getElementById(`quest__ans-set->${quest.id}`).innerHTML = '';
+    const optSetContainer = document.createElement('div');
+    optSetContainer.className = `quest__opt-set`;
+    optSetContainer.id = `quest__opt-set->${quest.id_question}`;
 
-      if (questType.value === 'text') {
-        btnNewAns.style.display = 'none';
-      }
+    this.setOptSet(quest.id_question, quest.type_question, optSetContainer);
 
-      if (questType.value !== 'text') {
-        btnNewAns.style.display = 'block';
-
-        if (typeof this.question.getQuest(quest.id).ansSet === 'string') {
-          this.question.setAnsSet(quest.id, 'answers');
-        }
-
-        this.setAnsSet(quest.id)
-      }
-    };
-  
-    const btnNewAns = document.createElement('button');
-    btnNewAns.className = 'quest__new-ans';
-    btnNewAns.id = `quest__new-ans->${quest.id}`;
-    btnNewAns.innerText = 'Agregar Respuesta';
-    btnNewAns.style.display = (questType.value === 'text') 
+    const btnNewOpt = document.createElement('button');
+    btnNewOpt.className = 'quest__new-opt';
+    btnNewOpt.id = `quest__new-opt->${quest.id_question}`;
+    btnNewOpt.innerText = 'Agregar Opción';
+    btnNewOpt.style.display = (questType.value === 'text')
       ? 'none' : 'block';
-    btnNewAns.onclick = () => this.addAns(quest.id);
-  
-    const btnSave = document.createElement('button');
-    btnSave.className = 'quest__save';
-    btnSave.id = `quest__save->${quest.id}`;
-    btnSave.innerText = 'Guardar';
-    btnSave.title = 'Guardar Pregunta';
-    btnSave.onclick = () => this.updateQuest(quest.id);
-  
+    btnNewOpt.onclick = () => {
+      this.addOpt(quest.id_question, 'Opción', optSetContainer);
+    }
+
     const btnRemove = document.createElement('button');
     btnRemove.className = 'quest__remove';
-    btnRemove.id = `quest__remove->${quest.id}`;
+    btnRemove.id = `quest__remove->${quest.id_question}`;
     btnRemove.innerText = 'Eliminar';
     btnRemove.title = 'Eliminar Pregunta';
-    btnRemove.onclick = () => this.removeQuest(quest.id);
-  
+    btnRemove.onclick = () => this.removeQuest(quest.id_question, quest.id_form);
+
     questContent.append(
       questTitle,
       questType,
-      ansSetContainer,
-      btnNewAns,
-      btnSave,
+      optSetContainer,
+      btnNewOpt,
+      // btnSave,
       btnRemove
     );
-  
-    this.questContainer.appendChild(questContent);  
+
+    this.questContainer.appendChild(questContent);
+  }
+
+  async addQuest(title, type, idForm) {
+    const quest = await this.ctrlQuest.addQuest(title, type, idForm);
+    this.createQuest(quest);
+  }
+
+  removeQuest(questId, formId) {
+    this.ctrlQuest.removeQuest(questId, formId);
+    document.getElementById(questId).remove();
+  }
+
+  updateQuest(questId, formId) {
+    const title = document.getElementById(`quest__title->${questId}`).value;
+    const type = document.getElementById(`quest__type->${questId}`).value;
+    const optSetContainer = document.getElementById(`quest__opt-set->${questId}`);
+    const itWasText = Array.from(optSetContainer.children)
+      .find(item => item.localName === 'p')?.localName === 'p';
+
+    if (!itWasText && type === 'text') {
+      this.ctrlQuest.removeOptSet(questId);
+      optSetContainer.innerHTML = `<p>Texto en respuesta de la pregunta</p>`;
+      document.getElementById(`quest__new-opt->${questId}`).style.display = 'none';
+    }
+
+    if (itWasText && type !== 'text') {
+      optSetContainer.innerHTML = ``;
+      this.addOpt(questId, 'Opción', optSetContainer);
+      document.getElementById(`quest__new-opt->${questId}`).style.display = 'block';
+    }
+
+    this.ctrlQuest.updateQuest(questId, formId, title, type);
+  }
+
+  /*==== CRUD Options ====*/
+
+  async setOptSet(questId, questType, optSetContainer) {
+    if (questType === 'text') {
+      optSetContainer.innerHTML = `<p>Texto en respuesta de la pregunta</p>`;
+      return;
+    }
+
+    const optSet = await this.ctrlQuest.getOptSet(questId);
+    optSet.forEach(opt => this.createOpt(opt, optSetContainer));
+  }
+
+  createOpt(option, containerOpt) {
+    const optInput = document.createElement('input');
+    optInput.type = 'text';
+    optInput.className = 'quest__opt-set__opt-input';
+    optInput.id = `quest__opt-set__opt-input->${option.id_option}`;
+    optInput.value = option.description_option;
+    optInput.onchange = () => {
+      this.updateOpt(option.id_option, option.id_question);
+    }
+
+    const btnRemoveOpt = document.createElement('button');
+    btnRemoveOpt.className = 'quest__opt-set__opt-remove';
+    btnRemoveOpt.id = `quest__opt-set__opt-remove->${option.id_option}`;
+    btnRemoveOpt.innerText = ' X ';
+    btnRemoveOpt.onclick = () => {
+      this.removeOpt(option.id_question, option.id_option);
+    }
+
+    containerOpt.append(optInput, btnRemoveOpt);
+  }
+
+  async addOpt(questId, desc, container) {
+    console.log({ questId, desc, container });
+    const opt = await this.ctrlQuest.addOpt(desc, questId);
+    this.createOpt(opt, container);
+  }
+
+  removeOpt(questId, optId) {
+    document.getElementById(`quest__opt-set__opt-input->${optId}`).remove();
+    document.getElementById(`quest__opt-set__opt-remove->${optId}`).remove();
+    this.ctrlQuest.removeOpt(questId, optId);
+  }
+
+  updateOpt(optId, questId) {
+    const option = document.getElementById(`quest__opt-set__opt-input->${optId}`);
+    const desc = option.value;
+    this.ctrlQuest.updateOpt(optId, desc, questId);
   }
 }

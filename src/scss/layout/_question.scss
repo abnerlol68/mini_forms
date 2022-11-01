@@ -22,19 +22,19 @@
     grid-column-end: 2;
   }
 
-  &__ans-set {
+  &__opt-set {
     width: 100%;
     margin-bottom: 2.8rem;
     display: grid;
     grid-template-columns: 2fr 1fr;
     grid-column-start: span;
 
-    &__ans-input {
+    &__opt-input {
       margin: 1rem 0;
       margin-right: 1rem;
     }
 
-    &__ans-remove {
+    &__opt-remove {
       width: 3.6rem;
       height: 3.6rem;
       margin: 1rem 0;
@@ -54,7 +54,7 @@
     border-radius: 0.8rem;
   }
 
-  &__new-ans {
+  &__new-opt {
     width: 15.5rem;
     justify-self: start;
     margin-bottom: 2.8rem;

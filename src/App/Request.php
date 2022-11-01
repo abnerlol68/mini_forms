@@ -69,12 +69,10 @@ class Request {
     if ($_SERVER['REQUEST_METHOD'] == 'POST' && $_GET['req'] == 'add_quest') {
       $content_req = json_decode(file_get_contents('php://input'), true);
 
-      // Soon the id will not be passed since from the DB it is auto-increment
       $this->conn->prepare('
-        INSERT INTO questions (id_question, description_question, type_question, id_form) 
-        VALUES (:id, :title, :type, :id_form)
+        INSERT INTO questions (description_question, type_question, id_form) 
+        VALUES (:title, :type, :id_form)
       ')->execute([
-        'id' => $content_req['id'],
         'title' => $content_req['title'],
         'type' => $content_req['type'],
         'id_form' => $content_req['idForm'],
@@ -159,6 +157,17 @@ class Request {
         ->execute([
           'id_quest' => $content_req['questId'],
           'id_opt' => $content_req['optId']
+        ]);
+      http_response_code(200);
+      return;
+    }
+
+    if ($_SERVER['REQUEST_METHOD'] == 'DELETE' && $_GET['req'] == 'remove_option-set') {
+      $content_req = json_decode(file_get_contents('php://input'), true);
+      $this->conn
+        ->prepare(' DELETE FROM optionss WHERE id_question = :id_quest')
+        ->execute([
+          'id_quest' => $content_req['questId'],
         ]);
       http_response_code(200);
       return;
