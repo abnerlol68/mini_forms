@@ -462,27 +462,25 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       <!-- Icon -->
       <div class="fadeIn first" id="img-logo">
         <!-- <p id="circle"></p> -->
-        <img src="public/assets/img/lobo-logo.png" id="icon" alt="User Icon" />
+        <img src="src/img/lobo-logo.png" id="icon" alt="User Icon" />
       </div>
-
+<br>
       <!-- Tabs Titles -->
       <div id="Titulo">
         <h2 class="active"> Inicio de Sesión </h2>
         <br>
       </div>
-
+<br>
       <!-- Login Form -->
       <form method="post" action="#" id="formlg">
-
         <div class="user-box">
-          <input type="text" id="login" class="fadeIn second" pattern="[A-Za-z0-9_-]{1,15}" name="username" autocomplete="off">
+          <input type="text" id="login" class="fadeIn second" pattern="[A-Za-z0-9_-]{1,15}" name="username" autocomplete="off" required="">
           <label for="login" id="label-first" class="fadeIn lbs1"> Usuario </label><br>
         </div>
         <div class="user-box">
-          <input type="password" id="password" class="fadeIn third" pattern="[A-Za-z0-9_-]{1,15}" name="password">
+          <input type="password" id="password" class="fadeIn third" pattern="[A-Za-z0-9_-]{1,15}" name="password" required="" autocomplete="off">
           <label for="password" id="label-second" class="fadeIn lbs2"> Contraseña </label><br>
            <i id="eye" class="fadeIn lbs2 typcn typcn-eye" alt="ver" onclick="viewPass()" style="color: #dce8f1"></i>
-          <!-- <img src="./assets/img/lobo-logo.svg-hide.png" id="eye" class="fadeIn lbs2" alt="ver" onclick="viewPass()"> -->
         </div>
         <input type="submit" class="fadeIn fourth" value="Ingresar" id="btn-submit">
       </form>
