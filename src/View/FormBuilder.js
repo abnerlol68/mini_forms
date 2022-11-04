@@ -10,15 +10,18 @@ export default class View {
 
   async render() {
     const questions = await this.ctrlQuest.getQuestSet();
-    questions.forEach(quest => this.createQuest(quest));
 
-    const idForm = document.getElementById('form_id').innerText;
+    if (questions.length === 0) {
+      this.addQuest('Pregunta', 'text', this.ctrlQuest.form);
+    } else {
+      questions.forEach(quest => this.createQuest(quest));
+    }
 
     const btnAdd = document.createElement('button');
     btnAdd.className = 'quest__add';
     btnAdd.innerText = 'Agregar';
     btnAdd.title = 'Agregar Pregunta';
-    btnAdd.onclick = () => this.addQuest('Pregunta', 'text', idForm);
+    btnAdd.onclick = () => this.addQuest('Pregunta', 'text', this.ctrlQuest.form);
 
     this.main.append(btnAdd);
   }
@@ -85,7 +88,6 @@ export default class View {
       questType,
       optSetContainer,
       btnNewOpt,
-      // btnSave,
       btnRemove
     );
 
@@ -158,7 +160,6 @@ export default class View {
   }
 
   async addOpt(questId, desc, container) {
-    console.log({ questId, desc, container });
     const opt = await this.ctrlQuest.addOpt(desc, questId);
     this.createOpt(opt, container);
   }

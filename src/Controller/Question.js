@@ -1,13 +1,14 @@
 export default class Question {
   constructor() {
     this.url = document.getElementById('url').innerText;
+    this.form = document.getElementById('form_id').innerText;
     this.questSet = this.requestQuests();
   }
 
   /* CRUD Question */
 
   async requestQuests() {
-    return fetch(`${this.url}request/?req=get_quests`)
+    return fetch(`${this.url}request/?req=get_quests&form=${this.form}`)
       .then(quests => quests.json());
   }
 

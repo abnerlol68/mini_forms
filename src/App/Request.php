@@ -60,7 +60,9 @@ class Request {
     /*==== Request for Questions ====*/
 
     if ($_SERVER['REQUEST_METHOD'] == 'GET' && $_GET['req'] == 'get_quests') {
-      $quests = [...$this->conn->query('SELECT * FROM questions')];
+      $stm = $this->conn->prepare('SELECT * FROM questions WHERE id_form = :form_id');
+      $stm->execute([ 'form_id' => $_GET['form'] ]);
+      $quests = $stm->fetchAll(PDO::FETCH_ASSOC);
       echo json_encode($quests);
       http_response_code(200);
       return;
