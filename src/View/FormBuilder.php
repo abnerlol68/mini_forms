@@ -18,6 +18,7 @@
   <p id="user" style="display: none;"><?= $_SESSION['user']['user_admin'] ?></p>
   <p id="form_id" style="display: none;"><?= $_GET['form_id'] ?></p>
   <main>
+    <a href="<?= URL . 'form_preview/?form=' . $_GET['form_id'] ?>" class="go-to-preview">Preview</a>
     <div class="quest-container" id="quest-container"></div>
   </main>
 </body>
