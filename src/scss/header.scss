@@ -1,0 +1,116 @@
+@import "./base/defaults";
+
+@keyframes animationBar {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0%);
+  }
+}
+
+#navbar {
+  position: fixed;
+  @include layoutGrid;
+  border-bottom: solid $bg2 4px;
+  @include fixPosition;
+  background-color: $bg2;
+  grid-template-columns: repeat(2, 1fr);
+  animation-name: animationBar;
+  animation-duration: 1.5s;
+}
+
+#navbar_logo {
+  display: grid;
+  justify-self: start;
+  align-self: center;
+}
+
+.navbar_logo {
+  font-family: $font4;
+  font-weight: bold;
+  color: $fg1;
+  margin: 0 0 0 5px;
+  letter-spacing: 2px;
+}
+
+#navbar_toggle {
+  display: none;
+  position: absolute;
+  right: 0;
+  cursor: pointer;
+}
+
+.menu {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  justify-items: center;
+  align-items: center;
+  justify-self: end;
+  margin-right: 10px;
+  gap: 20px;
+}
+
+#menus > .nav_item {
+  color: $fg1;
+  cursor: pointer;
+  padding: 2px;
+}
+
+#menus > .nav_item > .nav_link {
+  text-decoration: none;
+  color: $fg1;
+  margin-left: 5px;
+  font-size: large;
+  padding: 2px;
+}
+
+#menus > .nav_item > .nav_link:checked{
+  color: $bg2;
+}
+
+#menus {
+  .active {
+    border-bottom: solid $bg6 4px;
+    border-bottom: {
+      left-radius: 5px;
+      right-radius: 5px;
+    };
+  }
+}
+
+@mixin menus {
+  @include layoutGrid;
+  position: fixed;
+  background-color: $bg2;
+  right: -10px;
+  padding: 20px;
+  top: $navHeight;
+}
+
+@media (max-width: 680px) {
+
+
+  .menu.menu_collapsed {
+    @include menus;
+    right: -100%;
+    transition: 1s;
+  }
+
+  .menu.menu_collapsed.menu_active {
+    @include menus;
+  }
+
+  #navbar_toggle {
+    color: $bg6;
+    display: grid;
+    font-size: xx-large;
+    margin-right: 15px;
+  }
+  #content {
+    color: $bg2;
+  }
+
+}
+
+

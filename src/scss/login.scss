@@ -1,0 +1,200 @@
+@import "./base/defaults";
+
+#background {
+  position: absolute;
+  @include totalSize;
+  background-color: $bg2;
+  animation: infinite changeColor 6s;
+
+}
+
+@keyframes changeColor {
+  0% {
+    background-color: $bg2;
+  }
+  50% {
+    background-color: $bg2l;
+  }
+  100% {
+    background-color: $bg2;
+  }
+}
+
+$sizeLogin: 350px;
+
+#login {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: $sizeLogin;
+  background-color: $bg6;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 4px 1px $bg3;
+  padding: 20px 20px 30px;
+}
+
+#head_login {
+  @include layoutGrid;
+}
+
+$logoDimention: 100px;
+
+#logo_login {
+  height: $logoDimention;
+  width: $logoDimention;
+  margin: -70px auto -10px auto;
+}
+
+#login_message_head {
+  border-bottom: $bg2 solid 2px;
+  margin-bottom: 30px;
+  text-align: center;
+  font-size: xx-large;
+}
+
+#body_login {
+  position: relative;
+}
+
+#body_login > form {
+  @include layoutGrid;
+  row-gap: 35px;
+}
+
+
+#login_button {
+  background-color: $bg2;
+  color: $fg1;
+  border: $bg2 solid 4px;
+  padding: 10px 20px;
+  margin-top: 10px;
+  font-size: 20px;
+  animation-name: animationVoid;
+  animation-duration: 1s;
+}
+
+#login_button:hover,
+#login_button:focus {
+  animation-name: animationFill;
+  animation-duration: 1s;
+  background-color: $bg6;
+  color: $fg2;
+}
+
+@mixin animationButton($from, $to) {
+  from {
+    background-color: $from;
+  }
+  to {
+    background-color: $to;
+  }
+}
+
+@keyframes animationVoid {
+  @include animationButton($bg6, $bg2);
+}
+
+@keyframes animationFill {
+  @include animationButton($bg2, $bg6);
+}
+
+.login_inputs {
+  border: solid 1px $bg3;
+  border-bottom: $bg2 solid 4px;;
+  border-bottom: {
+    left-radius: 5px;
+    right-radius: 5px;
+  }
+  width: 100%;
+  height: 70%;
+  outline: none;
+  padding: 8px;
+  font-size: large;
+  text-align: center;
+}
+
+
+.login_inputs:focus {
+  border-bottom: solid $bg2d 4px;
+}
+
+.login_box_inputs {
+  @include layoutGrid;
+  position: relative;
+  width: 100%;
+}
+
+.login_box_body {
+  @include layoutGrid;
+  grid-template-columns: 20% 75%;
+  grid-template-rows: 50px;
+  gap: 0;
+}
+
+.inputs_icons {
+  color: $fg1;
+  display: grid;
+  justify-items: center;
+  align-items: center;
+  height: 100%;
+  width: 70%;
+  background-color: $bg2;
+}
+
+$porcent: -110%;
+
+.login_box_inputs .login_inputs:focus ~ .login_labels,
+.login_box_inputs .login_inputs:valid ~ .login_labels {
+  animation-name: moveTextUp;
+  animation-duration: 1s;
+  transform: translate(0, $porcent);
+  color: $bg2;
+}
+
+.login_labels {
+  position: absolute;
+  margin: 0;
+  padding: 0 2px;
+  background-color: $bg6;
+  color: $fg5;
+  text-align: center;
+  animation-name: moveTextDown;
+  animation-duration: 0.8s;
+}
+
+@keyframes moveTextUp {
+  from {
+    transform: translate(0, 0);
+  }
+  to {
+    transform: translate(0, $porcent);
+  }
+}
+
+@keyframes moveTextDown {
+  from {
+    transform: translate(0, $porcent);
+  }
+  to {
+    transform: translate(0, 0);
+  }
+}
+
+#show_password {
+  position: absolute;
+  right: 0;
+  color: $bg2;
+  padding: 0;
+  margin: 0;
+  background-color: $bg6;
+  cursor: pointer;
+}
+
+#foot_login {
+  display: none;
+}
+
+.typcn {
+  color: $fg1;
+  font-size: 30px;
+}
