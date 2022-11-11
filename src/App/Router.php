@@ -19,7 +19,7 @@ class Router
             'login' => ROOT . 'src/View/LoginAdmin.php',
             'home' => ROOT . 'src/View/Home.php',
             'data' => ROOT . 'src/View/Data.php',
-//            'stats' => ROOT . 'src/View/Data.php',
+            'stats' => ROOT . 'src/View/Stats.php',
             'form_builder' => ROOT . 'src/View/FormBuilder.php',
             'form_send' => ROOT . 'src/View/FormSend.php',
             'form_preview' => ROOT . 'src/View/FormPreview.php',
