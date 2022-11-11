@@ -12,6 +12,8 @@
     <link rel="stylesheet" href="src/Libs/icons/font/typicons.css">
     <link rel="stylesheet" href="src/css/header.css">
     <link rel="stylesheet" href="src/css/data.css">
+    <link rel="shortcut icon" href="src/img/favicon.png" type="image/x-icon">
+    <script src="<?= URL . 'src/View/Data.js' ?>" type="module"></script>
 </head>
 <body>
 
@@ -23,9 +25,6 @@ require_once ROOT . "src/View/Partials/Header.php";
 <br>
 <br>
 <br>
-
-<div id="forms_ids">
-</div>
 
 <div id="content-data">
     <div id="filters">
@@ -90,9 +89,8 @@ require_once ROOT . "src/View/Partials/Header.php";
 <div id="box-message">
     <div id="box-message__forms-selected">
     </div>
-    <textarea name="box-message__text" id="box-message__body" cols="30" rows="10" placeholder="Redacta un mensaje amable al egresado :)"></textarea>
-    <br>
-    <br>
+    <textarea name="box-message__text" id="box-message__body" cols="150" rows="10" required placeholder="Redacta un mensaje amable al egresado :)"></textarea>
+    <button id="box-message__button-send">Enviar</button>
 </div>
 
 <!--modal-->
@@ -122,121 +120,5 @@ require_once ROOT . "src/View/Partials/Header.php";
         </div>
     </div>
 </div>
-<script>
-    function removeID(index) {
-        const itemToDelte = document.getElementById(index);
-        const buttonToDelete = document.getElementById('form'.concat(index))
-        buttonToDelete.remove();
-        itemToDelte.remove();
-    }
-
-    function openModal() {
-        const modal = document.querySelector('#box-modal');
-        modal.style.display = "none";
-    }
-
-    function closeModal() {
-        const modal = document.querySelector('#box-modal');
-        modal.style.display = "grid";
-    }
-
-    const boxTableForms = document.getElementById('box-tables__forms')
-
-    document.addEventListener('DOMContentLoaded', () => {
-        loadForms();
-        loadUser()
-    })
-
-    async function loadForms() {
-        const formularios = await fetch('request/?req=get_forms').then(forms => forms.json());
-        const arr = formularios.valueOf();
-        const table_data = document.querySelector('#table-box-forms__body');
-        for (let i = 0; i < arr.length; i++) {
-            const row = document.createElement('tr');
-            const data = document.createElement('td');
-            data.innerText = arr[i]['title_form'];
-            row.onclick = () => getID(arr[i]['id_form'], arr[i]['title_form']);
-            row.append(data);
-            table_data.appendChild(row);
-        }
-        console.log(arr[0]);
-    }
-
-    async function loadUser() {
-        const usuarios = await fetch('request/?req=select_users').then(users => users.json());
-        const struct = ['name_graduate','last_name_graduate','mothers_surname','profession_graduate','email_graduate','phone_graduate','egress_year_graduate'];
-        const arr = usuarios.valueOf();
-        const table_data = document.querySelector('#table-box-user__body');
-        for (let i = 0; i < arr.length; i++) {
-            const row = document.createElement('tr');
-            for (let j = 0; j < struct.length; j++) {
-                const data = document.createElement('td');
-                let head = struct[j]
-                data.innerText = arr[i][head];
-                row.append(data);
-            }
-            table_data.appendChild(row);
-        }
-        let obj = usuarios[0];
-        console.log(obj['phone_graduate']);
-    }
-
-    function setValuesID(obj) {
-        const id_form = obj.innerText;
-        const valueId = document.querySelector('#value-id__form');
-        console.log(id_form,obj);
-        valueId.setAttribute('value',id_form)
-        openModal();
-    }
-
-    const boxModal = document.getElementById('box-modal');
-    boxModal.addEventListener('click', () => {
-
-        boxModal.style.display = 'none';
-
-    })
-
-    function getID(idF, nameF) {
-        //box-message__forms-selected
-        //<p>Formulario 1&nbsp;<i class="typcn typcn-plus" onclick="removeID(1)"></i></p>
-        const formsSelected = document.getElementById('box-message__forms-selected');
-        const formSelected = document.createElement('p');
-        const icon = document.createElement('i')
-        icon.setAttribute('class', 'typcn typcn-times');
-        icon.onclick = () => removeID(idF);
-        formSelected.innerText = nameF;
-        formSelected.append(icon);
-        formSelected.id = "form".concat(idF);
-        formsSelected.appendChild(formSelected);
-
-        const formsIDs = document.getElementById('forms_ids');
-        const elementWithId = document.createElement('p');
-        elementWithId.id = idF;
-        formsIDs.appendChild(elementWithId);
-    }
-
-    const formsSelected = document.getElementById('box-message__forms-selected');
-    const mess = document.createElement('p')
-    mess.innerText = 'Los formularios que selecciones aparecerán aquí';
-    mess.style.color = 'gray';
-    formsSelected.appendChild(mess);
-    // formsSelected.addEventListener('change', () => {
-    //     if (!formsSelected.hasChildNodes()) {
-    //         const mess = document.createElement('p')
-    //         mess.innerText = 'Los formularios que selecciones aparecerán aquí';
-    //         mess.style.color = 'gray';
-    //         formsSelected.appendChild(mess);
-    //     }
-    // })
-    // formsSelected.addEventListener('', () => {
-    //     if (!formsSelected.hasChildNodes()) {
-    //         const mess = document.createElement('p')
-    //         mess.innerText = 'Los formularios que selecciones aparecerán aquí';
-    //         mess.style.color = 'gray';
-    //         formsSelected.appendChild(mess);
-    //     }
-    // })
-
-</script>
 </body>
 </html>

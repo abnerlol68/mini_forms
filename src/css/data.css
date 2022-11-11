@@ -132,6 +132,7 @@ body {
   height: 45px;
   overflow-x: scroll;
   margin: auto;
+  justify-content: center;
 }
 #box-message__forms-selected p {
   display: inline;

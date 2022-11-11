@@ -8,6 +8,7 @@
         }
     },
     "require": {
-      "ext-pdo": "*"
+      "ext-pdo": "*",
+        "twilio/sdk": "^6.43"
     }
 }
