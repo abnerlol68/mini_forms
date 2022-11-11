@@ -193,6 +193,13 @@ class Request {
       return;
     }
 
+      if($_SERVER['REQUEST_METHOD'] == 'GET' && $_GET['req'] == 'select_users'){
+          $graduates = [...$this->conn->query('SELECT * FROM graduates')];
+          echo json_encode($graduates);
+          http_response_code(200);
+          return;
+      }
+
     echo 'Operation not available';
     http_response_code(400);
     return;

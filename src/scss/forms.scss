@@ -1,0 +1,147 @@
+@import "./base/defaults";
+
+#main {
+  @include layoutGrid;
+  grid-template-columns: repeat(6, 1fr);
+  row-gap: 5rem;
+  column-gap: 1px;
+}
+
+$form-size: 250px;
+.box-form {
+  @include layoutGrid;
+  @include adjustGrid;
+  width: $form-size;
+  height: $form-size + 25px;
+  grid-template-rows: 10% 60% auto 0;
+  border: 1px solid $bg2;
+  box-shadow: 0 0 8px 1px $gray2;
+}
+
+.box-form > .button-options {
+  @include adjustGrid;
+  text-align: end;
+  background-color: $bg2;
+  color: $bg6;
+  font-size: large;
+  cursor: pointer;
+}
+
+.box-form > .menu-options {
+
+  @include layoutGrid;
+  background-color: $bg2;
+  justify-items: center;
+  justify-self: end;
+  align-self: start;
+  margin-top: -250px;
+  width: 100px;
+  height: 100px;
+  color: $fg1;
+  display: none;
+
+  a {
+    cursor: pointer;
+    padding: 5px;
+    color: $fg1;
+    text-decoration: none;
+  }
+}
+
+.box-form > .menu-options.activeMenu {
+  display: grid;
+}
+
+.box-form > .box-form__icon {
+  border: 1px solid $bg2;
+  @include layoutGrid;
+  @include adjustGrid;
+  font-size: 100px;
+  color: $bg2;
+}
+
+.box-form > .box-form__data {
+  @include layoutGrid;
+  @include adjustGrid;
+  grid-template-rows: 80% 20%;
+}
+
+.box-form > .box-form__data > .box-form__title {
+  @include setSize(90%, 70%);
+  outline: none;
+  font-size: x-large;
+  text-align: center;
+  background-color: $gray1;
+  border: none;
+  border-bottom: $bg2 solid 2px;
+}
+
+.box-form > .box-form__data .box-form__inputLabel {
+  font-size: 28px;
+  background-color: $bg2;
+  color: $bg6;
+  padding: 4px 8px;
+  border-radius: 100%;
+  border: $bg2 solid 1px;
+  box-shadow: 0 2px 5px 1px black;
+  cursor: pointer;
+  transition: 1s;
+}
+
+.box-form > .box-form__data > .box-form__inputLabel:hover {
+  border: $bg2d solid 1px;
+  background-color: $bg2d;
+  transition: 1s;
+}
+
+.box-form > .box-form__data > .text_back_icon {
+  display: none;
+}
+
+.box-form.new_form {
+  background-color: $bg2;
+  transition: 1s;
+}
+
+.box-form.new_form {
+  @include layoutGrid;
+  grid-template-rows: 1fr;
+  border-radius: 100%;
+  padding: 10px;
+  @include setSizeS(60px);
+  align-items: center;
+  justify-items: center;
+
+
+  .typcn-plus {
+    display: grid;
+    text-align: center;
+    align-content: center;
+    color: $fg1;
+    @include setSizeS(55px)
+  }
+}
+
+.box-form.new_form:hover {
+  background-color: $bg2d;
+  transition: 1s;
+}
+
+@media (max-width: 1390px) {
+  #main {
+    grid-template-columns: repeat(3, 33%);
+  }
+}
+
+@media (max-width: 1050px) {
+  #main {
+    grid-template-columns: repeat(2, 50%);
+  }
+}
+
+@media (max-width: 700px) {
+  #main {
+    grid-template-columns: 100%;
+  }
+}
+
