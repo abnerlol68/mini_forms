@@ -12,6 +12,7 @@
     <link rel="shortcut icon" href="src/img/favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="src/Libs/icons/font/typicons.css">
     <link rel="stylesheet" href="src/css/header.css">
+    <link rel="stylesheet" href="src/css/footer.css">
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
     <script src="<?= URL . 'src/View/Stats.js' ?>" ></script>
 </head>
@@ -27,5 +28,11 @@ require_once ROOT . "src/View/Partials/Header.php";
 <br>
 <div id="chart">
 </div>
+<footer>
+    <?php
+    require_once  ROOT . "src/View/Partials/Footer.php";
+    ?>
+</footer>
+
 </body>
 </html>

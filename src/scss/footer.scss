@@ -1,0 +1,119 @@
+@import "./base/defaults";
+@import "./utils/responsive";
+
+
+$sizeIcons: 30px;
+
+footer {
+  display: grid;
+  align-self: end;
+  height: 160px;
+  background-color: $icons;
+  color: $iconsSelected;
+  #footer {
+    @include layoutGrid;
+    @include adjustGrid;
+    grid-template-columns: 40% auto;
+  }
+}
+
+.footer {
+  color: $textSelected;
+}
+
+#logos {
+  @include layoutGrid;
+  grid-template-columns: auto auto;
+  justify-items: center;
+  align-items: center;
+}
+
+#content-footer{
+  @include layoutGrid;
+  @include adjustGrid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+@mixin align{
+  display: grid;
+  align-items: center;
+  justify-items: center ;
+  .typcn {
+    font-size: $sizeIcons;
+  }
+}
+
+@mixin itemsAlign {
+  display: grid;
+  grid-template-columns: auto auto;
+  justify-items: center;
+  align-items: center;
+}
+
+#project {
+  @include align;
+  #project-content{
+    @include layoutGrid;
+    #project-item {
+  @include itemsAlign;
+    }
+  }
+}
+
+#socials {
+  @include align;
+  #socials-content {
+    @include layoutGrid;
+    #socials-item {
+      @include itemsAlign;
+    }
+  }
+}
+
+#feedback {
+  @include align;
+  #feedback-content {
+    @include layoutGrid;
+    #feedback-item {
+      @include itemsAlign;
+    }
+  }
+}
+
+.title-footers {
+  border-bottom: 1px $textSelected solid;
+  padding: 2px 40px;
+}
+
+@media (max-width: 1000px) {
+  #feedback{
+    display: none;
+  }
+  #content-footer{
+    @include layoutGrid;
+    @include adjustGrid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 750px) {
+  #socials{
+    display: none;
+  }
+  #content-footer{
+    @include layoutGrid;
+    @include adjustGrid;
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 500px) {
+  #project{
+    display: none;
+  }
+
+  footer {
+    #footer {
+      grid-template-columns: 100%;
+    }
+  }
+}

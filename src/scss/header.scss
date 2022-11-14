@@ -1,23 +1,12 @@
 @import "./base/defaults";
 
-@keyframes animationBar {
-  from {
-    transform: translateY(-100%);
-  }
-  to {
-    transform: translateY(0%);
-  }
-}
-
 #navbar {
   position: fixed;
   @include layoutGrid;
-  border-bottom: solid $bg2 4px;
+  //border-bottom: solid $bg2 4px;
   @include fixPosition;
-  background-color: $bg2;
+  background-color: $text;
   grid-template-columns: repeat(2, 1fr);
-  animation-name: animationBar;
-  animation-duration: 1.5s;
 }
 
 #navbar_logo {
@@ -29,9 +18,10 @@
 .navbar_logo {
   font-family: $font4;
   font-weight: bold;
-  color: $fg1;
+  color: $textSelected;
   margin: 0 0 0 5px;
-  letter-spacing: 2px;
+  letter-spacing: 4px;
+  font-size: x-large;
 }
 
 #navbar_toggle {
@@ -43,7 +33,7 @@
 
 .menu {
   display: grid;
-  grid-template-columns: repeat(3, auto);
+  grid-template-columns: repeat(4, auto);
   justify-items: center;
   align-items: center;
   justify-self: end;
@@ -52,30 +42,30 @@
 }
 
 #menus > .nav_item {
-  color: $fg1;
+  color: $titles;
   cursor: pointer;
-  padding: 2px;
+  padding: 4px;
 }
 
 #menus > .nav_item > .nav_link {
   text-decoration: none;
-  color: $fg1;
-  margin-left: 5px;
-  font-size: large;
+  color: $textSelected;
+  //margin-left: 5px;
+  font-size: larger;
   padding: 2px;
-}
-
-#menus > .nav_item > .nav_link:checked{
-  color: $bg2;
 }
 
 #menus {
   .active {
-    border-bottom: solid $bg6 4px;
+    background-color: $background;
+    border-radius: 5px;
     border-bottom: {
       left-radius: 5px;
       right-radius: 5px;
-    };
+    }
+    .nav_link {
+      color: $text;
+    }
   }
 }
 

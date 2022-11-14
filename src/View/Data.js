@@ -126,7 +126,8 @@ async function sendMessageTwilio() {
             const btn = document.getElementById('box-message__button-send');
             let idsForms = [];
             for (const idsFormsChild of idsFormsChildren) {
-                idsForms.push("localhost/mini_forms_client/form/?form_id=".concat(idsFormsChild.id));
+                idsForms.push("https://www.miniforms/client/form/?form_id=".concat(idsFormsChild.id));
+                // idsForms.push("https://www.youtube.com/");
             }
 
             let messageFull = msj.value;
