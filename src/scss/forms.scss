@@ -1,59 +1,125 @@
 @import "./base/defaults";
+@import "./utils/animations";
+
+#body-home {
+  @include layoutGrid;
+  @include adjustGrid;
+  grid-template-rows: 10% auto;
+  row-gap: 0;
+  margin-top: 45px;
+}
+
+#box-search {
+  @include layoutGrid;
+  @include adjustGrid;
+  grid-template-columns: repeat(2,50%);
+  align-self: start;
+  //height: 50px;
+}
+
+#search {
+  display: grid;
+  justify-self: end;
+  height: 15px;
+  outline: none;
+  border-radius: 10px;
+  border: none;
+  width: 300px;
+  padding: 10px;
+  margin-right: -10px;
+  box-shadow: 0 0 2px 1px $gray2;
+  //border-bottom: $text 1px solid;
+}
+
+#icon {
+  display: grid;
+  justify-self: start;
+  font-size: 35px;
+  background-color: $text;
+  color: $textSelected;
+  border-radius: 10px;
+  padding: 2px;
+}
 
 #main {
   @include layoutGrid;
+  @include adjustGrid;
   grid-template-columns: repeat(6, 1fr);
-  row-gap: 5rem;
-  column-gap: 1px;
+  width: 90%;
+  height: 500px !important;
+  row-gap: 2rem;
+  column-gap: 2rem;
+  background-color: $containerGeneral;
+  padding: 50px;
+  overflow: auto;
+  border-radius: 20px;
+  box-shadow: 0 0 2px 1px $gray2;
 }
 
 $form-size: 250px;
 .box-form {
   @include layoutGrid;
   @include adjustGrid;
+  border-radius: 5px;
   width: $form-size;
-  height: $form-size + 25px;
-  grid-template-rows: 10% 60% auto 0;
-  border: 1px solid $bg2;
-  box-shadow: 0 0 8px 1px $gray2;
+  height: 80px;
+  grid-template-columns: 90% auto ;
+  //box-shadow: 0 0 2px 1px $gray2;
+  background-color: $containerColor1;
 }
 
-.box-form > .button-options {
+.box-form > .box-form__content-options {
+  display: grid;
+  align-items: center;
+  grid-template-rows: 100%;
   @include adjustGrid;
-  text-align: end;
-  background-color: $bg2;
-  color: $bg6;
-  font-size: large;
-  cursor: pointer;
+  .box-form__button {
+    color: $text;
+    //background-color: $containerGeneral;
+    font-size: 20px;
+    cursor: pointer;
+    border-radius: 20px;
+    padding: 1px 2px 2px;
+    width: fit-content;
+    transition: 0.5s;
+  }
+
+  .box-form__button:hover {
+    color: $textSelected;
+    background-color: $iconsBg;
+    transition: 0.5s;
+  }
+
 }
 
-.box-form > .menu-options {
-
+.box-form > .box-form__content-options > .box-form__menu-options {
   @include layoutGrid;
-  background-color: $bg2;
-  justify-items: center;
-  justify-self: end;
-  align-self: start;
-  margin-top: -250px;
-  width: 100px;
-  height: 100px;
-  color: $fg1;
+  background-color: $textBg;
+  border-radius: 5px;
+  padding: 5px;
+  margin-top: -20px;
   display: none;
-
   a {
     cursor: pointer;
     padding: 5px;
-    color: $fg1;
+    color: $textSelected;
     text-decoration: none;
   }
 }
 
-.box-form > .menu-options.activeMenu {
-  display: grid;
+.box-form__focus-btn{
+  position: absolute;
+  left: -100%;
 }
 
+.box-form__focus-btn:checked + .box-form__menu-options{
+  display: grid;
+  animation-name: opacityOn;
+  animation-duration: 1s;
+}
+
+
 .box-form > .box-form__icon {
-  border: 1px solid $bg2;
   @include layoutGrid;
   @include adjustGrid;
   font-size: 100px;
@@ -64,6 +130,14 @@ $form-size: 250px;
   @include layoutGrid;
   @include adjustGrid;
   grid-template-rows: 80% 20%;
+  .box-form__edit-name {
+    position: absolute;
+    left: -100%;
+  }
+  .box-form__edit-name:checked + .box-form__title {
+pointer-events: none;
+    color: $subtitles;
+  }
 }
 
 .box-form > .box-form__data > .box-form__title {
@@ -71,26 +145,25 @@ $form-size: 250px;
   outline: none;
   font-size: x-large;
   text-align: center;
-  background-color: $gray1;
+  background-color: transparent;
   border: none;
-  border-bottom: $bg2 solid 2px;
+  border-bottom: $text solid 2px;
 }
 
 .box-form > .box-form__data .box-form__inputLabel {
   font-size: 28px;
-  background-color: $bg2;
+  background-color: $iconsBg;
   color: $bg6;
   padding: 4px 8px;
   border-radius: 100%;
-  border: $bg2 solid 1px;
   box-shadow: 0 2px 5px 1px black;
   cursor: pointer;
   transition: 1s;
 }
 
 .box-form > .box-form__data > .box-form__inputLabel:hover {
-  border: $bg2d solid 1px;
-  background-color: $bg2d;
+  background-color: $iconsSelected;
+  color: $text;
   transition: 1s;
 }
 
@@ -127,9 +200,13 @@ $form-size: 250px;
   transition: 1s;
 }
 
+
+//width: 90%;
+//         height: 80%;
 @media (max-width: 1390px) {
   #main {
     grid-template-columns: repeat(3, 33%);
+    width: 70%;
   }
 }
 
@@ -142,6 +219,7 @@ $form-size: 250px;
 @media (max-width: 700px) {
   #main {
     grid-template-columns: 100%;
+    width: 50%;
   }
 }
 

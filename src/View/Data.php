@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="src/Libs/icons/font/typicons.css">
     <link rel="stylesheet" href="src/css/header.css">
     <link rel="stylesheet" href="src/css/data.css">
+    <link rel="stylesheet" href="src/css/footer.css">
     <link rel="shortcut icon" href="src/img/favicon.png" type="image/x-icon">
     <script src="<?= URL . 'src/View/Data.js' ?>" type="module"></script>
 </head>
@@ -120,5 +121,11 @@ require_once ROOT . "src/View/Partials/Header.php";
         </div>
     </div>
 </div>
+
+<footer>
+    <?php
+    require_once  ROOT . "src/View/Partials/Footer.php";
+    ?>
+</footer>
 </body>
 </html>

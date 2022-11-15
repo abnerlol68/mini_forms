@@ -199,6 +199,8 @@ class Request
 
         if ($_SERVER['REQUEST_METHOD'] == 'GET' && $_GET['req'] == 'select_users') {
             $graduates = [...$this->conn->query('SELECT * FROM graduates')];
+//            $enc = mb_check_encoding($graduates, 'ASCII');
+//            var_dump($enc);
             echo json_encode($graduates);
             http_response_code(200);
             return;

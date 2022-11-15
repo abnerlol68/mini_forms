@@ -1,0 +1,188 @@
+@font-face {
+  font-family: Helvi;
+  src: url("../Libs/fonts/Helvetica.ttf");
+}
+@font-face {
+  font-family: arima;
+  src: url("../Libs/fonts/Arima-VariableFont_wght.ttf");
+  font-weight: 500;
+}
+@font-face {
+  font-family: bitter;
+  src: url("../Libs/fonts/Bitter-VariableFont_wght.ttf");
+  font-weight: 400;
+}
+* {
+  font-family: Helvi, Arial, sans-serif;
+}
+
+html {
+  padding: 0;
+  margin: 0;
+  border: 0;
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  display: grid;
+  height: 100%;
+  width: 100%;
+  background-color: #f3f6fd;
+  color: #000;
+  padding: 0;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  #project {
+    display: none;
+  }
+}
+footer {
+  display: grid;
+  align-self: end;
+  height: 160px;
+  background-color: #000;
+  color: #fff;
+}
+footer #footer {
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: center;
+  justify-items: center;
+  height: 100%;
+  width: 100%;
+  grid-template-columns: 40% auto;
+}
+
+.footer {
+  color: #fff;
+}
+
+#logos {
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: center;
+  justify-items: center;
+  grid-template-columns: auto auto;
+  justify-items: center;
+  align-items: center;
+}
+
+#content-footer {
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: center;
+  justify-items: center;
+  height: 100%;
+  width: 100%;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+#project {
+  display: grid;
+  align-items: center;
+  justify-items: center;
+}
+#project .typcn {
+  font-size: 30px;
+}
+#project #project-content {
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: center;
+  justify-items: center;
+}
+#project #project-content #project-item {
+  display: grid;
+  grid-template-columns: auto auto;
+  justify-items: center;
+  align-items: center;
+}
+
+#socials {
+  display: grid;
+  align-items: center;
+  justify-items: center;
+}
+#socials .typcn {
+  font-size: 30px;
+}
+#socials #socials-content {
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: center;
+  justify-items: center;
+}
+#socials #socials-content #socials-item {
+  display: grid;
+  grid-template-columns: auto auto;
+  justify-items: center;
+  align-items: center;
+}
+
+#feedback {
+  display: grid;
+  align-items: center;
+  justify-items: center;
+}
+#feedback .typcn {
+  font-size: 30px;
+}
+#feedback #feedback-content {
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: center;
+  justify-items: center;
+}
+#feedback #feedback-content #feedback-item {
+  display: grid;
+  grid-template-columns: auto auto;
+  justify-items: center;
+  align-items: center;
+}
+
+.title-footers {
+  border-bottom: 1px #fff solid;
+  padding: 2px 40px;
+}
+
+@media (max-width: 1000px) {
+  #feedback {
+    display: none;
+  }
+  #content-footer {
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: center;
+    justify-items: center;
+    height: 100%;
+    width: 100%;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 750px) {
+  #socials {
+    display: none;
+  }
+  #content-footer {
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: center;
+    justify-items: center;
+    height: 100%;
+    width: 100%;
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 500px) {
+  #project {
+    display: none;
+  }
+  footer #footer {
+    grid-template-columns: 100%;
+  }
+}
+
+/*# sourceMappingURL=footer.css.map */

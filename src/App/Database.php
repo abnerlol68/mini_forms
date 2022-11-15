@@ -19,6 +19,7 @@ class Database {
     $this->password = DB_PASS;
   }
 
+
   public function get_conn(): PDO {
     return new PDO("mysql:host=$this->host;dbname=$this->db", $this->user, $this->password);
   }

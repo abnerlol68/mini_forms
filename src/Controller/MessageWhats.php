@@ -9,14 +9,14 @@ use Twilio\Rest\Client;
 $mess = $_SESSION['userMessage'];
 
 $sid    = "ACe09fe34aa0d7094abb76aa449205a397";
-$token  = "7355c7f9c029e986dda5e7b176c26180";
+$token  = "3556a903e2d4ce80cc8ef1175d5ceffc";
 $twilio = new Client($sid, $token);
 
 $message = $twilio->messages
     ->create("whatsapp:+5217721446962", // to
         array(
             "from" => "whatsapp:+14155238886",
-            "body" => "$mess"
+            "body" => $mess
         )
     );
 

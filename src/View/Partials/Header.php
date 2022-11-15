@@ -40,6 +40,11 @@ if ($uriRequest === '/mini_forms/home' || $uriRequest === '/mini_forms/')
             Estadisticas
             </a>
         </label>
+        <label for="iconUser">
+            <select name="iconUser" id="iconUser">
+                <option value="0">Cerrar sesión</option>
+            </select>
+        </label>
     </div>
 </nav>
 

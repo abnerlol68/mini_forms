@@ -1,6 +1,23 @@
-$font1: Helvetica, Arial, sans-serif;
-$font: Helvetica, Arial, sans-serif;
+@font-face {
+  font-family: Helvi;
+  src: url("../Libs/fonts/Helvetica.ttf");
+}
+
+@font-face {
+  font-family: arima;
+  src: url("../Libs/fonts/Arima-VariableFont_wght.ttf");
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: bitter;
+  src: url("../Libs/fonts/Bitter-VariableFont_wght.ttf");
+  font-weight: 400;
+}
+
+$font1: Helvi, Arial, sans-serif;
+$font: Helvi, Arial, sans-serif;
 $font2: Consolas, "Times New Roman", "Arial Black";
 $font3: Roboto, sans-serif;
-$font4: Consolas, "Arial Black";
+$font4: bitter, "Arial Black";
 $font5: "Hack Nerd Font", Helvetica;

@@ -56,12 +56,16 @@ export default class View {
     const boxForm = document.createElement('div');
     boxForm.className = 'box-form';
     boxForm.id = form.id_form;
+    // Box head
+    const boxFormContentOptions = document.createElement('div');
+    boxFormContentOptions.className = 'box-form__content-options';
+    boxFormContentOptions.id = `box-form__content-options-->${form.id_form}`;
     // Hamburger button to the options form
-    const boxFormButtonOptions = document.createElement('i');
-    boxFormButtonOptions.className = 'button-options typcn typcn-th-menu';
+    const boxFormButtonOptions = document.createElement('label');
+    boxFormButtonOptions.className = 'box-form__button typcn typcn-th-menu';
     boxFormButtonOptions.id = `box-form__button-options-->${form.id_form}`;
-    boxFormButtonOptions.innerHTML = '&nbsp;';
-    boxFormButtonOptions.onclick = () => this.openOptions(boxForm.id);
+    // boxFormButtonOptions.innerHTML = '&nbsp;';
+    boxFormButtonOptions.htmlFor = `box-form__focus-btn-->${form.id_form}`;
     // Icon of the form
     const boxFormIcon = document.createElement('i');
     boxFormIcon.className = 'box-form__icon typcn typcn-heart-full-outline';
@@ -76,24 +80,27 @@ export default class View {
     boxFormInput.type = 'text';
     boxFormInput.className = 'box-form__title';
     boxFormInput.id = `box-form__title->${form.id_form}`;
-    boxFormInput.setAttribute("disabled", null);
     boxFormInput.name = `box-form__title->${form.id_form}`;
     boxFormInput.value = form.title_form;
     boxFormInput.onchange = () => this.updateForm(form.id_form);
     // label - icon to change the name
     const boxFormInputLabel = document.createElement('label');
     boxFormInputLabel.className = 'box-form__inputLabel typcn typcn-pencil text_edit_icon';
-    boxFormInputLabel.id = `box-form__inputLabel-->${form.id_form}`;
-    boxFormInputLabel.htmlFor = `box-form__title-->${form.id_form}`;
-    boxFormInputLabel.onclick = () => this.editText(boxForm.id);
+    boxFormInputLabel.htmlFor = `box-form__edit-name-->${form.id_form}`;
     // i - icon to leave the edition name
-    const boxFormInputIcon = document.createElement('i');
+    const boxFormInputIcon = document.createElement('label');
     boxFormInputIcon.className = 'box-form__inputLabel typcn typcn-arrow-back text_back_icon';
-    boxFormInputIcon.onclick = () => this.closeText(boxForm.id);
+    boxFormInputIcon.htmlFor = `box-form__edit-name-->${form.id_form}`;
+    // Simulated onclick css
+    const boxFormEditName = document.createElement('input');
+    boxFormEditName.type = 'checkbox';
+    boxFormEditName.className = 'box-form__edit-name';
+    boxFormEditName.id = `box-form__edit-name-->${form.id_form}`;
+    boxFormEditName.checked = true;
     // Menu options for the form: edit, remove
     const boxFormMenuOptions = document.createElement('div');
     boxFormMenuOptions.id = `box-form__menu-options-->${form.id_form}`;
-    boxFormMenuOptions.className = 'menu-options';
+    boxFormMenuOptions.className = 'box-form__menu-options';
     // Options
     // Edit
     const boxFormGoTo = document.createElement('a');
@@ -107,43 +114,22 @@ export default class View {
     boxFormRemove.innerText = "Eliminar";
     boxFormRemove.id = `box-form__remove->${form.id_form}`
     boxFormRemove.onclick = () => this.removeForm(form.id_form);
+    // Modo clic en css
+    const boxFormFocusBtn = document.createElement('input');
+    boxFormFocusBtn.type = 'checkbox';
+    boxFormFocusBtn.className = 'box-form__focus-btn';
+    boxFormFocusBtn.id = `box-form__focus-btn-->${form.id_form}`;
 
-    boxFormData.append(boxFormInput, boxFormInputLabel, boxFormInputIcon);
+    boxFormData.append(boxFormEditName,boxFormInput, boxFormInputLabel, boxFormInputIcon);
 
     boxFormMenuOptions.append(boxFormGoTo, boxFormRemove);
 
-    boxForm.append(boxFormButtonOptions, boxFormIcon, boxFormData, boxFormMenuOptions);
+    boxFormContentOptions.append(boxFormButtonOptions, boxFormFocusBtn, boxFormMenuOptions);
+
+    boxForm.append(boxFormData, boxFormContentOptions);
 
     this.main.appendChild(boxForm);
 
-  }
-
-
-  editText(position) {
-    const intpos = Number(position);
-    const btnPen = document.getElementsByClassName("text_edit_icon");
-    const btnBack = document.getElementsByClassName("text_back_icon")
-    const textNameForms = document.getElementsByClassName("box-form__title");
-    textNameForms[intpos - 1].removeAttribute("disabled");
-    btnPen[intpos - 1].style.display = "none";
-    btnBack[intpos - 1].style.display = "inline";
-  }
-
-  closeText(position) {
-    const intpos = Number(position);
-    const btnPen = document.getElementsByClassName("text_edit_icon");
-    const btnBack = document.getElementsByClassName("text_back_icon")
-    const textNameForms = document.getElementsByClassName("box-form__title");
-    textNameForms[intpos-1].setAttribute("disabled", null);
-    btnPen[intpos-1].style.display = "inline";
-    btnBack[intpos-1].style.display = "none";
-  }
-
-  openOptions(position){
-    const intpost = Number(position);
-    const btnFormOptions = document.getElementsByClassName("button-options");
-    const options = document.getElementsByClassName("menu-options");
-    options[intpost-1].classList.toggle("activeMenu");
   }
 
 }
