@@ -9,6 +9,7 @@
     },
     "require": {
       "ext-pdo": "*",
-        "twilio/sdk": "^6.43"
+        "twilio/sdk": "^6.43",
+        "vlucas/phpdotenv": "^5.5"
     }
 }
