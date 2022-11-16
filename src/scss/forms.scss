@@ -97,7 +97,7 @@ $form-size: 250px;
   background-color: $textBg;
   border-radius: 5px;
   padding: 5px;
-  margin-top: -20px;
+  margin-top: 100px;
   display: none;
   a {
     cursor: pointer;
@@ -114,6 +114,7 @@ $form-size: 250px;
 
 .box-form__focus-btn:checked + .box-form__menu-options{
   display: grid;
+  position: absolute;
   animation-name: opacityOn;
   animation-duration: 1s;
 }

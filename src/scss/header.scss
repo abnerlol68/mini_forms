@@ -103,4 +103,46 @@
 
 }
 
+.box-user {
+  //display: grid;
+  //grid-template-columns: 1fr;
+  //row-gap: 20px;
+}
+
+.box-user__icon {
+  font-size: 30px;
+  font-family: $fonti;
+  cursor: pointer;
+  background-color: white;
+  padding: 0;
+  margin: 0;
+  border: none;
+  border-radius: 100%;
+}
+
+#activeOptions {
+  position: absolute;
+  left: -100%;
+}
+
+#activeOptions:checked + .box-user__options {
+  display: grid;
+}
+
+.box-user__options {
+  position: fixed;
+  margin-top: 10px;
+  background-color: $iconsBg;
+  color: #00c5dc;
+  margin-left: -90px;
+  display: none;
+  padding: 2px 10px;
+  a {
+    text-decoration: none;
+    color: $textSelected;
+    padding: 10px 0;
+  }
+}
+
+
 

@@ -40,12 +40,15 @@ if ($uriRequest === '/mini_forms/home' || $uriRequest === '/mini_forms/')
             Estadisticas
             </a>
         </label>
-        <label for="iconUser">
-            <select name="iconUser" id="iconUser">
-                <option value="0">Cerrar sesión</option>
-            </select>
-        </label>
+        <div class="box-user">
+            <label for="activeOptions" class="box-user__icon typcn typcn-user"></label>
+            <input type="checkbox" name="activeOptions" id="activeOptions">
+            <div class="box-user__options">
+                <a href="<?= URL . 'src/Controller/CloseSession.php' ?>" >Cerrar sesion</a>
+            </div>
+        </div>
     </div>
 </nav>
+
 
 <script src="<?= URL . 'src/View/Partials/Header.js' ?>"></script>

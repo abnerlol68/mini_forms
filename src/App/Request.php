@@ -214,6 +214,17 @@ class Request
             return;
         }
 
+        if ($_SERVER['REQUEST_METHOD'] == 'POST' && $_GET['req'] == 'start_session') {
+
+        }
+
+        if ($_SERVER['REQUEST_METHOD'] == 'GET' && $_GET['req'] == 'close_session') {
+            session_destroy();
+            echo "Session cerrada correctamente";
+//            header('Location: ' . URL);
+            http_response_code(200);
+        }
+
         echo 'Operation not available';
         http_response_code(400);
         return;

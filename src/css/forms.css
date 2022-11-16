@@ -12,6 +12,10 @@
   src: url("../Libs/fonts/Bitter-VariableFont_wght.ttf");
   font-weight: 400;
 }
+@font-face {
+  font-family: typcn;
+  src: url("../Libs/fonts/typicons.ttf");
+}
 * {
   font-family: Helvi, Arial, sans-serif;
 }
@@ -159,7 +163,7 @@ body {
   background-color: #353b42;
   border-radius: 5px;
   padding: 5px;
-  margin-top: -20px;
+  margin-top: 100px;
   display: none;
 }
 .box-form > .box-form__content-options > .box-form__menu-options a {
@@ -176,6 +180,7 @@ body {
 
 .box-form__focus-btn:checked + .box-form__menu-options {
   display: grid;
+  position: absolute;
   animation-name: opacityOn;
   animation-duration: 1s;
 }

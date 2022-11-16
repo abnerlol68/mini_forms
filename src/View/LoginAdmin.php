@@ -73,7 +73,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <input class="login_inputs" type="password" name="password" id="password" required=""
                            autocomplete="off" maxlength="15">
                     <label class="login_labels" for="password">Password</label>
-                    <p id="show_password" onclick="show()">mostrar</p>
+                    <a id="show_password" onclick="show()" href="<?= URL . '/' ?>">mostrar</a>
                 </div>
             </div>
             <button type="submit" id="login_button">

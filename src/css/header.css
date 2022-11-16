@@ -12,6 +12,10 @@
   src: url("../Libs/fonts/Bitter-VariableFont_wght.ttf");
   font-weight: 400;
 }
+@font-face {
+  font-family: typcn;
+  src: url("../Libs/fonts/typicons.ttf");
+}
 * {
   font-family: Helvi, Arial, sans-serif;
 }
@@ -140,6 +144,40 @@ body {
   #content {
     color: #800;
   }
+}
+.box-user__icon {
+  font-size: 30px;
+  font-family: typcn;
+  cursor: pointer;
+  background-color: white;
+  padding: 0;
+  margin: 0;
+  border: none;
+  border-radius: 100%;
+}
+
+#activeOptions {
+  position: absolute;
+  left: -100%;
+}
+
+#activeOptions:checked + .box-user__options {
+  display: grid;
+}
+
+.box-user__options {
+  position: fixed;
+  margin-top: 10px;
+  background-color: #000;
+  color: #00c5dc;
+  margin-left: -90px;
+  display: none;
+  padding: 2px 10px;
+}
+.box-user__options a {
+  text-decoration: none;
+  color: #fff;
+  padding: 10px 0;
 }
 
 /*# sourceMappingURL=header.css.map */
