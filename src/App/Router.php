@@ -12,7 +12,7 @@ class Router
     {
         return rtrim(isset($_GET['url']) ? $_GET['url'] : null, '/');
     }
-
+// Routes
     public function redirect($uri): void
     {
         $ADDRESS = [
