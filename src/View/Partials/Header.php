@@ -44,7 +44,7 @@ if ($uriRequest === '/mini_forms/home' || $uriRequest === '/mini_forms/')
             <label for="activeOptions" class="box-user__icon typcn typcn-user"></label>
             <input type="checkbox" name="activeOptions" id="activeOptions">
             <div class="box-user__options">
-                <a href="<?= URL . 'src/Controller/CloseSession.php' ?>" >Cerrar sesion</a>
+                <a href="<?= URL . 'close_session' ?>" >Cerrar sesion</a>
             </div>
         </div>
     </div>

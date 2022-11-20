@@ -6,15 +6,12 @@
   @include adjustGrid;
   grid-template-rows: 10% auto;
   row-gap: 0;
-  margin-top: 45px;
+  //margin-top: 45px;
 }
 
 #box-search {
-  @include layoutGrid;
-  @include adjustGrid;
-  grid-template-columns: repeat(2,50%);
-  align-self: start;
-  //height: 50px;
+  display: flex;
+  margin:auto;
 }
 
 #search {
@@ -28,7 +25,6 @@
   padding: 10px;
   margin-right: -10px;
   box-shadow: 0 0 2px 1px $gray2;
-  //border-bottom: $text 1px solid;
 }
 
 #icon {
@@ -44,11 +40,11 @@
 #main {
   @include layoutGrid;
   @include adjustGrid;
-  grid-template-columns: repeat(6, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   width: 90%;
   height: 500px !important;
   row-gap: 2rem;
-  column-gap: 2rem;
+  column-gap: 1rem;
   background-color: $containerGeneral;
   padding: 50px;
   overflow: auto;
@@ -75,7 +71,6 @@ $form-size: 250px;
   @include adjustGrid;
   .box-form__button {
     color: $text;
-    //background-color: $containerGeneral;
     font-size: 20px;
     cursor: pointer;
     border-radius: 20px;
@@ -172,15 +167,16 @@ pointer-events: none;
   display: none;
 }
 
-.box-form.new_form {
-  background-color: $bg2;
+.box-form.new-form {
+  background-color: $containerColor1;
   transition: 1s;
 }
 
-.box-form.new_form {
+.box-form.new-form {
   @include layoutGrid;
   grid-template-rows: 1fr;
   border-radius: 100%;
+  border: none;
   padding: 10px;
   @include setSizeS(60px);
   align-items: center;
@@ -191,13 +187,20 @@ pointer-events: none;
     display: grid;
     text-align: center;
     align-content: center;
-    color: $fg1;
-    @include setSizeS(55px)
+    color: $icons;
+    font-size: 30px;
+    //@include setSizeS(55px);
   }
 }
 
-.box-form.new_form:hover {
-  background-color: $bg2d;
+.box-form.new-form:hover {
+  background-color: $iconsBg;
+
+  .typcn-plus {
+    color: $iconsSelected;
+    transition: 1s;
+  }
+
   transition: 1s;
 }
 

@@ -1,18 +1,51 @@
-// import ApexCharts from '../Libs/apexcharts/dist/apexcharts.js';
+import ApexCharts from './../Libs/apexcharts/dist/apexcharts';
+
 
 let options = {
-    chart: {
-        type: 'line'
-    },
     series: [{
-        name: 'sales',
-        data: [30,40,35,50,49,60,70,91,125]
+        data: [21, 22, 10, 28, 16, 21, 13, 30]
     }],
+    chart: {
+        height: 350,
+        type: 'bar',
+        events: {
+            click: function(chart, w, e) {
+                // console.log(chart, w, e)
+            }
+        }
+    },
+    colors: ['#000','#00F','#0F0','#F00','#0FF','#FF0','#F0F'],
+    plotOptions: {
+        bar: {
+            columnWidth: '45%',
+            distributed: true,
+        }
+    },
+    dataLabels: {
+        enabled: false
+    },
+    legend: {
+        show: false
+    },
     xaxis: {
-        categories: [1991,1992,1993,1994,1995,1996,1997, 1998,1999]
+        categories: [
+            ['John', 'Doe'],
+            ['Joe', 'Smith'],
+            ['Jake', 'Williams'],
+            'Amber',
+            ['Peter', 'Brown'],
+            ['Mary', 'Evans'],
+            ['David', 'Wilson'],
+            ['Lily', 'Roberts'],
+        ],
+        labels: {
+            style: {
+                colors: ['#000','#00F','#0F0','#F00','#0FF','#FF0','#F0F'],
+                fontSize: '12px'
+            }
+        }
     }
-}
+};
 
-let chart = new ApexCharts(document.querySelector("#chart"), options);
-
+var chart = new ApexCharts(document.querySelector("#box-charts__complete-forms"), options);
 chart.render();

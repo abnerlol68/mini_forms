@@ -24,6 +24,7 @@ class Router
             'form_send' => ROOT . 'src/View/FormSend.php',
             'form_preview' => ROOT . 'src/View/FormPreview.php',
             'form_for_polled' => ROOT . 'src/View/FormForPolled.php',
+            'close_session' => ROOT . 'src/Controller/CloseSession.php',
             'not_found' => ROOT . 'src/View/NotFound.php',
         ];
 

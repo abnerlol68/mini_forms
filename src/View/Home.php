@@ -18,16 +18,19 @@
 <?php
 require_once ROOT . "src/View/Partials/Header.php";
 ?>
-<p id="url" style="display: none;"><?= URL ?></p>
-<p id="user" style="display: none;"><?= $_SESSION["user"]["user_admin"] ?></p>
+<div id="san"></div>
+<div>
+    <p id="url" style="display: none;"><?= URL ?></p>
+    <p id="user" style="display: none;"><?= $_SESSION["user"]["user_admin"] ?></p>
 
-<div id="body-home">
-    <div id="box-search">
-        <input type="text" name="search" id="search" placeholder="¿Qué nombre tiene el formulario?">
-        <i id="icon" class="typcn typcn-zoom"></i>
+    <div id="body-home">
+        <div id="box-search">
+            <input type="text" name="search" id="search" placeholder="¿Qué nombre tiene el formulario?">
+            <i id="icon" class="typcn typcn-zoom"></i>
+        </div>
+        <main id="main">
+        </main>
     </div>
-    <main id="main">
-    </main>
 </div>
 
 <footer>

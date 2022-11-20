@@ -21,6 +21,8 @@ body {
   color: $text;
   padding: 0;
   margin: 0;
+  grid-template-rows: 45px auto 30%;
+  row-gap: 0;
 }
 
 @mixin totalSize {

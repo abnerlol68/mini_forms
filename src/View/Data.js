@@ -108,7 +108,7 @@ function addTextMessage(container) {
     mess.innerText = 'Los formularios que selecciones aparecerán aquí';
     mess.style.color = 'gray';
     mess.style.backgroundColor = 'white';
-    container.appendChild(mess);
+    // container.appendChild(mess);
 }
 
 const formsSelected = document.getElementById('box-message__forms-selected');

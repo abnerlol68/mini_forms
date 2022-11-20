@@ -1,0 +1,11 @@
+@import "./base/defaults";
+
+#box-charts {
+  @include layoutGrid;
+  //@include adjustGrid;
+  grid-template-rows: repeat(2,1fr);
+  justify-items: stretch;
+  align-items: stretch;
+  margin-top: 45px;
+  //align-self: stretch;
+}

@@ -11,11 +11,10 @@ export default class View {
     this.boxFormAdd.onclick = () => this
         .addForm(`Nuevo Formulario`, document.getElementById('user').innerText);
 
-    const boxFormAddTitle = document.createElement('span');
-    boxFormAddTitle.className = 'new-form__title';
-    boxFormAddTitle.innerText = 'Agregar Formulario';
+    const boxFormAddIcon = document.createElement('i');
+    boxFormAddIcon.classList = 'typcn typcn-plus';
 
-    this.boxFormAdd.appendChild(boxFormAddTitle);
+    this.boxFormAdd.appendChild(boxFormAddIcon);
   }
 
   setController(controller) {

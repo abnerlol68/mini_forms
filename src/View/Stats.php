@@ -13,26 +13,21 @@
     <link rel="stylesheet" href="src/Libs/icons/font/typicons.css">
     <link rel="stylesheet" href="src/css/header.css">
     <link rel="stylesheet" href="src/css/footer.css">
-    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
-    <script src="<?= URL . 'src/View/Stats.js' ?>" ></script>
+    <link rel="stylesheet" href="src/css/stats.css">
+<!--    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>-->
 </head>
 <body>
-
 <?php
 require_once ROOT . "src/View/Partials/Header.php";
 ?>
-
-<br>
-<br>
-<br>
-<br>
-<div id="chart">
-</div>
+    <div id="box-charts">
+        <iframe src="<?= URL . 'src/View/ChartForms.html' ?>" frameborder="0" class="doc-charts"></iframe>
+        <iframe src="<?= URL . 'src/View/ChartForms.html' ?>" frameborder="0" class="doc-charts"></iframe>
+    </div>
 <footer>
     <?php
     require_once  ROOT . "src/View/Partials/Footer.php";
     ?>
 </footer>
-
 </body>
 </html>
