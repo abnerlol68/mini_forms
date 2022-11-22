@@ -7,14 +7,16 @@
 
 #box-data {
   @include layoutGrid;
-  height: 800px;
+  height: auto;
   row-gap: 1rem;
   margin-top: 20px;
 }
+
 #box-tables {
   @include layoutGrid;
   width: 95%;
   justify-items: stretch;
+  align-items: stretch;
   grid-template-columns: 70% 30%;
   background-color: $iconsSelected;
   padding: 20px 10px 40px 10px;
@@ -24,7 +26,11 @@
 
 .box-tables__container {
   display: grid;
-  grid-row-gap: 1rem
+  grid-row-gap: 1rem;
+}
+
+#box-tables__container-users {
+  grid-template-rows: 95% 5%;
 }
 
 #box-table__user-options {
@@ -35,6 +41,7 @@
 #box-data-user {
   display: grid;
   justify-self: center;
+  grid-template-rows: 10% 10% auto;
   width: 95%;
 }
 
@@ -42,7 +49,67 @@
   display: grid;
   justify-self: center;
   width: 80%;
+  grid-template-rows: 15% 10% auto 15%;
+}
 
+#selected-users, #selected-forms{
+  display: none;
+  margin: {
+    top: -100px;
+    bottom: 5px;
+  }
+  background-color: rgba(0,0,0,0.5);
+  width: 95%;
+  justify-self: center;
+  height: 95px !important;
+  box-shadow: 0 0 2px 2px $gray2;
+  border: 1px solid $iconsBg;
+  overflow-y: auto;
+}
+
+#selected-forms__options {
+  display: grid;
+  justify-self: center;
+  //width: 50%;
+  align-self: center;
+}
+
+
+#box-data__table-forms {
+  @include layoutGrid;
+  grid-template-rows: 100%;
+}
+
+#selected-users__onclick, #selected-forms__onclick{
+  position: absolute;
+  left: -100%;
+}
+
+#selected-users__onclick:checked + #selected-users {
+  display: grid;
+}
+
+#selected-forms__onclick:checked + #selected-forms {
+  display: grid;
+}
+
+#box-message {
+  @include layoutGrid;
+  grid-template-rows: 80% 20%;
+}
+
+#box-message__head {
+  @include layoutGrid;
+  grid-template-rows: 100%;
+  justify-self: stretch;
+  align-self: stretch;
+}
+
+#box-message__body {
+  resize: none;
+  display: grid;
+  justify-self: stretch;
+  align-self: stretch;
 }
 
 .box-message__button {
@@ -52,6 +119,15 @@
   font-size: 18px;
   background-color: $iconsBg;
   color: $textSelected;
+  cursor: pointer;
+}
+
+#box-message__button-send {
+  margin: {
+    top: -20px
+  }
+  display: grid;
+  justify-self: end;
 }
 
 #box-data__select-head, #box-data__select-head-forms{
@@ -59,11 +135,11 @@
 }
 
 #box-data__select-head {
-  grid-template-columns: repeat(3,1fr);
+  grid-template-columns: repeat(2,1fr);
 }
 
 #box-data__select-head-forms {
-  grid-template-columns: repeat(2,1fr);
+  grid-template-columns: 1fr;
 }
 
 .box-message__button:hover {
@@ -89,6 +165,29 @@
   grid-template-columns: repeat(3, 1fr);
 }
 
+.filter {
+  border: none;
+  outline: none;
+  padding: 5px;
+  border-radius: 5px;
+  //box-shadow: 0 0 2px 1px $gray1;
+  background-color: $iconsBg;
+  color: $textSelected;
+}
+
+
+.box-data__table-selectors {
+  @include layoutGrid;
+  grid-template-columns: repeat(2,1fr);
+  div {
+    cursor: pointer;
+    i {
+      font-size: 25px;
+    }
+    font-size: 15px;
+  }
+}
+
 ////// General Styles for the tables ///////////////////
 
 .box-data__container, .box-data__table-body{
@@ -112,6 +211,14 @@
   width: auto;
   overflow-y: auto;
 }
+.table-body__forms {
+  display: grid;
+  justify-self: stretch;
+  align-self: stretch;
+  height: 265px !important;
+  width: auto;
+  overflow-y: auto;
+}
 
 .head__users {
   grid-template-columns: 20% 10% 10% 20% 20% 10% 10%;
@@ -124,6 +231,7 @@
   tr {
     @include layoutGrid;
     background-color: $background;
+    cursor: pointer;
   }
 
   tr:nth-child(even) {
@@ -132,6 +240,10 @@
 
   tr:hover{
     background-color: $iconsBg;
+    color: $textSelected;
+  }
+  tr:active {
+    background-color: #00c5dc;
     color: $textSelected;
   }
 }
@@ -155,9 +267,9 @@
   outline: none;
   border:none;
   border-radius: 5px;
-  box-shadow: 0 0 2px 1px $gray2;
+  box-shadow: 0 0 2px 2px $gray2;
   padding: 5px;
-  margin-right: -10px;
+  //margin-bottom: 5px;
 }
 
 .table-searchbox__button {
@@ -171,3 +283,41 @@
     font-size: 20px;
   }
 }
+
+
+.cntActive{
+  display: grid;
+}
+
+.selected-user__added, .selected-form__added {
+  @include layoutGrid;
+  background-color: $background;
+  color: $text;
+  //justify-self: center;
+  align-self: center;
+  height: 40px;
+  border: 1px dotted $gray2;
+}
+
+.selected-user__added {
+  grid-template-columns: repeat(4, 1fr) 50px 20px;
+}
+
+.selected-form__added {
+  grid-template-columns: auto 20px;
+}
+
+#box-message__alert {
+  color: $textRed;
+  visibility: hidden;
+}
+
+.btnRemove {
+  cursor: pointer;
+}
+
+#file-chooser {
+  display: none;
+}
+
+//.selected-form__added {}

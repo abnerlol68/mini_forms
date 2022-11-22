@@ -199,8 +199,6 @@ class Request
 
         if ($_SERVER['REQUEST_METHOD'] == 'GET' && $_GET['req'] == 'select_users') {
             $graduates = [...$this->conn->query('SELECT * FROM graduates')];
-//            $enc = mb_check_encoding($graduates, 'ASCII');
-//            var_dump($enc);
             echo json_encode($graduates);
             http_response_code(200);
             return;
@@ -223,6 +221,43 @@ class Request
             echo "Session cerrada correctamente";
 //            header('Location: ' . URL);
             http_response_code(200);
+        }
+
+
+        if ($_SERVER['REQUEST_METHOD'] == 'POST' && $_GET['req'] == 'insert_users') {
+            $content_req = json_decode(file_get_contents('php://input'), true);
+            $stm = $this->conn->prepare(
+                'INSERT INTO graduates (
+                       email_graduate,
+                       phone_graduate,
+                       name_graduate,
+                       last_name_graduate,
+                       mothers_surname,
+                       profession_graduate,
+                       egress_year_graduate
+                       )
+                        VALUES (
+                                :email,
+                                :phone,
+                                :name,
+                                :lastName,
+                                :motherSurname,
+                                :carrier,
+                                :graduate
+                                )'
+            );
+            $stm->execute([
+                'name' => $content_req['name'],
+                'lastName' => $content_req['lastName'],
+                'motherSurname' => $content_req['motherSurname'],
+                'carrier' => $content_req['carrier'],
+                'email' => $content_req['email'],
+                'phone' => $content_req['phone'],
+                'graduate' => $content_req['graduate'],
+            ]);
+            echo json_encode($content_req);
+            http_response_code(201);
+            return;
         }
 
         echo 'Operation not available';

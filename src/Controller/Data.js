@@ -17,3 +17,14 @@ export async function loadUser() {
     const usuarios = await fetch('request/?req=select_users').then(users => users.json());
     return usuarios.valueOf();
 }
+
+export async function insertUser(data) {
+    const response = await fetch('request/?req=insert_users', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    }).then(res => res.json());
+    return response;
+}

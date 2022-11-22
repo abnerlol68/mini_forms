@@ -26,32 +26,30 @@ require_once ROOT . "src/View/Partials/Header.php";
 
 <div id="box-data">
     <div id="box-tables">
-        <div class="box-tables__container">
+        <div class="box-tables__container" id="box-tables__container-users">
             <div id="box-data-user" class="box-data__container">
                 <div id="box-data__select-head">
                     <div class="box-data__table-searchbox">
-                        <input type="search" name="searched" id="searched" class="table-searchbox__search">
+                        <select  class="filter" id="table-searchbox__filter">
+                            <option value="name_graduate">Nombre</option>
+                            <option value="last_name_graduate">Apellido Paterno</option>
+                            <option value="mothers_surname">Apellido Materno</option>
+                            <option value="email_graduate">Correo</option>
+                            <option value="phone_graduate">Telefono</option>
+                        </select>
+                        <input type="search" name="searched" id="search-users" class="table-searchbox__search">
                         <button class="table-searchbox__button"><i class="typcn typcn-zoom"></i></button>
                     </div>
-                    <div class="box-data__table-filter">
                         <select name="carriers" id="carriers" class="filter">
                             <option value="void"></option>
-                            <option value="sistemas">Ing. en Sistemas</option>
-                            <option value="alimentarias">Ing. en Sistemas</option>
-                            <option value="electromecanica">Ing. en Sistemas</option>
-                            <option value="arquitectura">Ing. en Sistemas</option>
-                            <option value="sistemas">Ing. en Sistemas</option>
+                            <option value="Sistemas Computacionales">Ing. en Sistemas</option>
+                            <option value="Electromecánica">Ing. en Electromecánica</option>
+                            <option value="TICS">Ing. en Telecomunicaciones</option>
+                            <option value="Arquitectura">Arquitectura</option>
+                            <option value="Logística">Ing. em Logística</option>
+                            <option value="Alimentarias">Ing. en Alimentarias</option>
+                            <option value="Gestión Empresarial">Gestión Empresarial</option>
                         </select>
-                        <select name="timeGraduate" id="timeGraduate" class="filter">
-                            <option value="void"></option>
-                            <option value="1-2">De 1 a 2 años</option>
-                            <option value="3-5">De 3 a 5 años</option>
-                        </select>
-                    </div>
-                    <div class="box-data__table-selectors">
-                        <div><i class="typcn typcn-input-checked">Todos</i></div>
-                        <div><i class="typcn typcn-bell">Ninguno</i></div>
-                    </div>
                 </div>
                 <div class="box-data__table-head head__users">
                     <p>Nombre(s)</p>
@@ -68,10 +66,16 @@ require_once ROOT . "src/View/Partials/Header.php";
                         </tbody>
                     </table>
                 </div>
+                <input type="checkbox" name="selected-users__onclick" id="selected-users__onclick">
+                <div id="selected-users"></div>
             </div>
             <div id="box-table__user-options">
-                <button id="box-message__button-upload" class="box-message__button">Subir csv</button>
-                <button id="box-message__button-download" class="box-message__button">Descargar csv</button>
+                <input type="file" name="file-chooser" id="file-chooser">
+                <label for="file-chooser" id="box-message__button-upload" class="box-message__button">Subir csv</label>
+<!--                <button id="box-message__button-download" class="box-message__button">Descargar csv</button>-->
+                <label for="selected-users__onclick" id="box-message_label-onclick">
+                    <span id="box-message__button-watch" class="box-message__button"><span id="selected-users__tag">Ver</span> seleccionados (<span id="selected-users__counter">0</span>)</span>
+                </label>
             </div>
         </div>
 
@@ -79,27 +83,36 @@ require_once ROOT . "src/View/Partials/Header.php";
             <div id="box-data-forms" class="box-data__container">
                 <div id="box-data__select-head-forms">
                     <div class="box-data__table-searchbox">
-                        <input type="search" name="searched" id="searched" class="table-searchbox__search">
+                        <input type="search" name="searched" id="search-forms" class="table-searchbox__search">
                         <button class="table-searchbox__button"><i class="typcn typcn-zoom"></i></button>
-                    </div>
-                    <div class="box-data__table-selectors">
-                        <div><i class="typcn typcn-input-checked">Todos</i></div>
-                        <div><i class="typcn typcn-bell">Ninguno</i></div>
                     </div>
                 </div>
                 <div class="box-data__table-head">
                     <p>Formularios</p>
                 </div>
-                <div class="box-data__table-body">
-                    <table id="table-box-forms">
-                        <tbody id="table-box-forms__body">
-                        </tbody>
-                    </table>
+                <div id="box-data__table-forms">
+                    <div class="box-data__table-body table-body__forms">
+                        <table id="table-box-forms">
+                            <tbody id="table-box-forms__body">
+                            </tbody>
+                        </table>
+                    </div>
+                    <input type="checkbox" name="selected-forms__onclick" id="selected-forms__onclick">
+                    <div id="selected-forms"></div>
                 </div>
+                <label for="selected-forms__onclick" id="selected-forms__options">
+                    <span id="box-message__button-watch-forms" class="box-message__button"><span id="selected-forms__tag">Ver</span> seleccionados (<span id="selected-forms__counter">0</span>)</span>
+                </label>
             </div>
-            <div>
-                <textarea name="box-message__text" id="box-message__body" cols="40" rows="5" required placeholder="Redacta un mensaje amable al egresado :)"></textarea>
-                <button id="box-message__button-send" class="box-message__button">Enviar</button>
+            <div id="box-message">
+                <div id="box-message__head">
+                    <textarea name="box-message__text" id="box-message__body" required placeholder="Redacta un mensaje amable al egresado :)"></textarea>
+                    <button id="box-message__button-send" class="box-message__button">Enviar</button>
+                </div>
+                <div id="box-message__alert">
+                    <i class="typcn typcn-warning"></i>
+                    <span id="box-message__alert-body"></span>
+                </div>
             </div>
         </div>
     </div>
