@@ -2,15 +2,27 @@
 $bg6: #fff;
 $bg1: #000;
 
+// Pallete
+$color1: #E63946;
+$color2: #F1FAEE;
+$color3: #A8DADC;
+$color4: #457B9D;
+$color5: #1D3557;
+
 // Colors for light theme
   // General background
-$background: #f3f6fd;
-  // Color text
-$titles: #000;
-$subtitles: #999;
-$text: #000;
-$textRed: #860000;
-$textSelected: #fff;
+$background: #F1FAEE;
+  // Color text dark
+$titleDark: #1D3557;
+$subtitleDark: #457B9D;
+$textDark: #1D3557;
+
+$titleLight: #A8DADC;
+$subtitleLight: #F1FAEE;
+$textLight: #fff;
+
+$textAlert: #E63946;
+
   // background text
 $textBg: #353b42;
   // Color icons

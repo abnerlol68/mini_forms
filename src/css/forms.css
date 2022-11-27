@@ -32,8 +32,8 @@ body {
   display: grid;
   height: 100%;
   width: 100%;
-  background-color: #f3f6fd;
-  color: #000;
+  background-color: #F1FAEE;
+  color: #1D3557;
   padding: 0;
   margin: 0;
   grid-template-rows: 45px auto 160px;
@@ -77,21 +77,21 @@ body {
   justify-self: end;
   height: 15px;
   outline: none;
-  border-radius: 10px;
+  border-radius: 5px;
   border: none;
   width: 300px;
   padding: 10px;
   margin-right: -10px;
-  box-shadow: 0 0 2px 1px #c2c1c1;
+  box-shadow: 0 0 8px 2px #457B9D;
 }
 
 #icon {
   display: grid;
   justify-self: start;
   font-size: 35px;
-  background-color: #000;
-  color: #fff;
-  border-radius: 10px;
+  background-color: #1D3557;
+  color: #F1FAEE;
+  border-radius: 5px;
   padding: 2px;
 }
 
@@ -107,11 +107,11 @@ body {
   height: 500px !important;
   row-gap: 2rem;
   column-gap: 1rem;
-  background-color: #fff;
+  background-color: #A8DADC;
   padding: 50px;
   overflow: auto;
-  border-radius: 20px;
-  box-shadow: 0 0 2px 1px #c2c1c1;
+  border-radius: 5px;
+  box-shadow: 0 0 8px 2px #457B9D;
 }
 
 .box-form {
@@ -125,7 +125,7 @@ body {
   width: 250px;
   height: 80px;
   grid-template-columns: 90% auto;
-  background-color: #c3cff4;
+  background-color: #457B9D;
 }
 
 .box-form > .box-form__content-options {
@@ -136,17 +136,18 @@ body {
   width: 100%;
 }
 .box-form > .box-form__content-options .box-form__button {
-  color: #000;
+  color: #fff;
   font-size: 20px;
   cursor: pointer;
-  border-radius: 20px;
+  border-radius: 5px;
   padding: 1px 2px 2px;
   width: fit-content;
   transition: 0.5s;
+  background-color: #1D3557;
 }
 .box-form > .box-form__content-options .box-form__button:hover {
-  color: #fff;
-  background-color: #000;
+  color: #F1FAEE;
+  background-color: #1D3557;
   transition: 0.5s;
 }
 
@@ -164,7 +165,7 @@ body {
 .box-form > .box-form__content-options > .box-form__menu-options a {
   cursor: pointer;
   padding: 5px;
-  color: #fff;
+  color: #F1FAEE;
   text-decoration: none;
 }
 
@@ -178,17 +179,6 @@ body {
   position: absolute;
   animation-name: opacityOn;
   animation-duration: 1s;
-}
-
-.box-form > .box-form__icon {
-  display: grid;
-  grid-template-columns: 1fr;
-  align-items: center;
-  justify-items: center;
-  height: 100%;
-  width: 100%;
-  font-size: 100px;
-  color: #800;
 }
 
 .box-form > .box-form__data {
@@ -206,7 +196,7 @@ body {
 }
 .box-form > .box-form__data .box-form__edit-name:checked + .box-form__title {
   pointer-events: none;
-  color: #999;
+  color: #fff;
 }
 
 .box-form > .box-form__data > .box-form__title {
@@ -217,23 +207,23 @@ body {
   text-align: center;
   background-color: transparent;
   border: none;
-  border-bottom: #000 solid 2px;
+  border-bottom: #1D3557 solid 2px;
 }
 
 .box-form > .box-form__data .box-form__inputLabel {
   font-size: 28px;
-  background-color: #000;
-  color: #fff;
+  background-color: #1D3557;
+  color: #F1FAEE;
   padding: 4px 8px;
   border-radius: 100%;
-  box-shadow: 0 2px 5px 1px black;
+  box-shadow: 0 0 8px 2px #457B9D;
   cursor: pointer;
   transition: 1s;
 }
 
 .box-form > .box-form__data > .box-form__inputLabel:hover {
   background-color: #fff;
-  color: #000;
+  color: #1D3557;
   transition: 1s;
 }
 
@@ -259,21 +249,21 @@ body {
   width: 60px;
   align-items: center;
   justify-items: center;
+  background-color: #1D3557;
 }
 .box-form.new-form .typcn-plus {
   display: grid;
   text-align: center;
   align-content: center;
-  color: #000;
+  color: #F1FAEE;
   font-size: 30px;
 }
 
 .box-form.new-form:hover {
-  background-color: #000;
+  background-color: #457B9D;
   transition: 1s;
 }
 .box-form.new-form:hover .typcn-plus {
-  color: #fff;
   transition: 1s;
 }
 

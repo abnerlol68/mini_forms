@@ -37,11 +37,11 @@ require_once ROOT . "src/View/Partials/Header.php";
                             <option value="email_graduate">Correo</option>
                             <option value="phone_graduate">Telefono</option>
                         </select>
-                        <input type="search" name="searched" id="search-users" class="table-searchbox__search">
-                        <button class="table-searchbox__button"><i class="typcn typcn-zoom"></i></button>
+                        <input type="search" name="searched" id="search-users" class="table-searchbox__search"  placeholder="Dime qué buscar...">
+<!--                        <button class="table-searchbox__button"><i class="typcn typcn-zoom"></i></button>-->
                     </div>
                         <select name="carriers" id="carriers" class="filter">
-                            <option value="void"></option>
+                            <option value="void">-- Carrera --</option>
                             <option value="Sistemas Computacionales">Ing. en Sistemas</option>
                             <option value="Electromecánica">Ing. en Electromecánica</option>
                             <option value="TICS">Ing. en Telecomunicaciones</option>
@@ -83,8 +83,8 @@ require_once ROOT . "src/View/Partials/Header.php";
             <div id="box-data-forms" class="box-data__container">
                 <div id="box-data__select-head-forms">
                     <div class="box-data__table-searchbox">
-                        <input type="search" name="searched" id="search-forms" class="table-searchbox__search">
-                        <button class="table-searchbox__button"><i class="typcn typcn-zoom"></i></button>
+                        <input type="search" name="searched" id="search-forms" class="table-searchbox__search" placeholder="Dime qué buscar...">
+<!--                        <button class="table-searchbox__button"><i class="typcn typcn-zoom"></i></button>-->
                     </div>
                 </div>
                 <div class="box-data__table-head">

@@ -1,4 +1,4 @@
-import ApexCharts from './../Libs/apexcharts/dist/apexcharts';
+import ApexCharts from 'apexcharts';
 
 
 let options = {

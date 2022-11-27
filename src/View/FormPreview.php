@@ -7,6 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Form Preview</title>
   <script src="<?= URL . 'src/App/FormPreview.js' ?>" type="module"></script>
+    <link rel="stylesheet" href="<?= URL . 'src/css/survey.css' ?>">
 </head>
 
 <body>

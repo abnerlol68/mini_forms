@@ -149,9 +149,9 @@ export default class View {
     }
 
     const btnRemoveOpt = document.createElement('button');
-    btnRemoveOpt.className = 'quest__opt-set__opt-remove';
+    btnRemoveOpt.className = 'quest__opt-set__opt-remove typcn typcn-times';
     btnRemoveOpt.id = `quest__opt-set__opt-remove->${option.id_option}`;
-    btnRemoveOpt.innerText = ' X ';
+    // btnRemoveOpt.innerText = ' X ';
     btnRemoveOpt.onclick = () => {
       this.removeOpt(option.id_question, option.id_option);
     }

@@ -32,8 +32,8 @@ body {
   display: grid;
   height: 100%;
   width: 100%;
-  background-color: #f3f6fd;
-  color: #000;
+  background-color: #F1FAEE;
+  color: #1D3557;
   padding: 0;
   margin: 0;
   grid-template-rows: 45px auto 160px;
@@ -48,19 +48,19 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: #800;
+  background-color: #457B9D;
   animation: infinite changeColor 6s;
 }
 
 @keyframes changeColor {
   0% {
-    background-color: #800;
+    background-color: #457B9D;
   }
   50% {
-    background-color: #a40303;
+    background-color: #1D3557;
   }
   100% {
-    background-color: #800;
+    background-color: #457B9D;
   }
 }
 #login {
@@ -68,9 +68,9 @@ body {
   top: 50%;
   left: 50%;
   width: 350px;
-  background-color: #fff;
+  background-color: #F1FAEE;
   transform: translate(-50%, -50%);
-  box-shadow: 0 0 4px 1px #4c4c4c;
+  box-shadow: 0 0 8px 2px #457B9D;
   padding: 20px 20px 30px;
 }
 
@@ -88,7 +88,7 @@ body {
 }
 
 #login_message_head {
-  border-bottom: #800 solid 2px;
+  border-bottom: #1D3557 solid 2px;
   margin-bottom: 30px;
   text-align: center;
   font-size: xx-large;
@@ -107,9 +107,9 @@ body {
 }
 
 #login_button {
-  background-color: #800;
-  color: #fff;
-  border: #800 solid 4px;
+  background-color: #1D3557;
+  color: #F1FAEE;
+  border: #1D3557 solid 4px;
   padding: 10px 20px;
   margin-top: 10px;
   font-size: 20px;
@@ -121,29 +121,29 @@ body {
 #login_button:focus {
   animation-name: animationFill;
   animation-duration: 1s;
-  background-color: #fff;
-  color: #800;
+  background-color: #F1FAEE;
+  color: #1D3557;
 }
 
 @keyframes animationVoid {
   from {
-    background-color: #fff;
+    background-color: #F1FAEE;
   }
   to {
-    background-color: #800;
+    background-color: #1D3557;
   }
 }
 @keyframes animationFill {
   from {
-    background-color: #800;
+    background-color: #1D3557;
   }
   to {
-    background-color: #fff;
+    background-color: #F1FAEE;
   }
 }
 .login_inputs {
-  border: solid 1px #4c4c4c;
-  border-bottom: #800 solid 4px;
+  border: solid 1px #1D3557;
+  border-bottom: #1D3557 solid 4px;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
   width: 100%;
@@ -152,10 +152,11 @@ body {
   padding: 8px;
   font-size: large;
   text-align: center;
+  background-color: #F1FAEE;
 }
 
 .login_inputs:focus {
-  border-bottom: solid #F94144 4px;
+  border-bottom: solid #457B9D 4px;
 }
 
 .login_box_inputs {
@@ -178,13 +179,13 @@ body {
 }
 
 .inputs_icons {
-  color: #fff;
+  color: #F1FAEE;
   display: grid;
   justify-items: center;
   align-items: center;
   height: 100%;
   width: 70%;
-  background-color: #800;
+  background-color: #1D3557;
 }
 
 .login_box_inputs .login_inputs:focus ~ .login_labels,
@@ -192,14 +193,14 @@ body {
   animation-name: moveTextUp;
   animation-duration: 1s;
   transform: translate(0, -110%);
-  color: #800;
+  color: #1D3557;
 }
 
 .login_labels {
   position: absolute;
   margin: 0;
   padding: 0 2px;
-  background-color: #fff;
+  background-color: #F1FAEE;
   color: #605d5d;
   text-align: center;
   animation-name: moveTextDown;
@@ -225,11 +226,13 @@ body {
 #show_password {
   position: absolute;
   right: 0;
-  color: #800;
+  color: #1D3557;
   padding: 0;
   margin: 0;
-  background-color: #fff;
+  background-color: #F1FAEE;
   cursor: pointer;
+  text-decoration: none;
+  font-weight: bold;
 }
 
 #foot_login {
@@ -237,7 +240,7 @@ body {
 }
 
 .typcn {
-  color: #fff;
+  color: #F1FAEE;
   font-size: 30px;
 }
 

@@ -5,7 +5,7 @@
   @include layoutGrid;
   //border-bottom: solid $bg2 4px;
   @include fixPosition;
-  background-color: $text;
+  background-color: $textDark;
   grid-template-columns: repeat(2, 1fr);
 }
 
@@ -18,7 +18,7 @@
 .navbar_logo {
   font-family: $font4;
   font-weight: bold;
-  color: $textSelected;
+  color: $textLight;
   margin: 0 0 0 5px;
   letter-spacing: 4px;
   font-size: x-large;
@@ -42,14 +42,14 @@
 }
 
 #menus > .nav_item {
-  color: $titles;
+  color: $titleDark;
   cursor: pointer;
   padding: 4px;
 }
 
 #menus > .nav_item > .nav_link {
   text-decoration: none;
-  color: $textSelected;
+  color: $textLight;
   //margin-left: 5px;
   font-size: larger;
   padding: 2px;
@@ -58,13 +58,13 @@
 #menus {
   .active {
     background-color: $background;
-    border-radius: 5px;
+    border-radius: $borderRadius;
     border-bottom: {
       left-radius: 5px;
       right-radius: 5px;
     }
     .nav_link {
-      color: $text;
+      color: $textDark;
     }
   }
 }
@@ -72,9 +72,9 @@
 @mixin menus {
   @include layoutGrid;
   position: fixed;
-  background-color: $iconsBg;
+  background-color: $color5;
   right: -10px;
-  border-radius: 10px;
+  border-radius: $borderRadius;
   padding: 20px;
   top: $navHeight;
 }
@@ -91,13 +91,13 @@
   }
 
   #navbar_toggle {
-    color: $bg6;
+    color: $color2;
     display: grid;
     font-size: xx-large;
     margin-right: 15px;
   }
   #content {
-    color: $iconsBg;
+    color: $color5;
   }
 
 }
@@ -106,12 +106,6 @@
   .navbar_logo {
     font-size: large;
   }
-}
-
-.box-user {
-  //display: grid;
-  //grid-template-columns: 1fr;
-  //row-gap: 20px;
 }
 
 .box-user__icon {
@@ -137,14 +131,15 @@
 .box-user__options {
   position: fixed;
   margin-top: 10px;
-  background-color: $iconsBg;
+  background-color: $color5;
   color: #00c5dc;
   margin-left: -90px;
   display: none;
   padding: 2px 10px;
+  border-radius: $borderRadius;
   a {
     text-decoration: none;
-    color: $textSelected;
+    color: $textLight;
     padding: 10px 0;
   }
 }

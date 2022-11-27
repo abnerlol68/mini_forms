@@ -18,10 +18,10 @@
   justify-items: stretch;
   align-items: stretch;
   grid-template-columns: 70% 30%;
-  background-color: $iconsSelected;
+  background-color: $color3;
   padding: 20px 10px 40px 10px;
-  border-radius: 5px;
-  box-shadow: 0 0 2px 1px $gray2;
+  border-radius: $borderRadius;
+  box-shadow: $boxShadow;
 }
 
 .box-tables__container {
@@ -58,12 +58,12 @@
     top: -100px;
     bottom: 5px;
   }
-  background-color: rgba(0,0,0,0.5);
+  background-color: rgba($color3,0.5);
   width: 95%;
   justify-self: center;
   height: 95px !important;
-  box-shadow: 0 0 2px 2px $gray2;
-  border: 1px solid $iconsBg;
+  box-shadow: $boxShadow;
+  border: 1px solid $color5;
   overflow-y: auto;
 }
 
@@ -114,11 +114,11 @@
 
 .box-message__button {
   border: none;
-  border-radius: 5px;
+  border-radius: $borderRadius;
   padding: 10px;
   font-size: 18px;
-  background-color: $iconsBg;
-  color: $textSelected;
+  background-color: $color5;
+  color: $textLight;
   cursor: pointer;
 }
 
@@ -143,20 +143,20 @@
 }
 
 .box-message__button:hover {
-  background-color: $gray1;
-  color: $textSelected;
+  background-color: $color4;
+  color: $textLight;
 }
 
 .box-message__button:active {
-  background-color: $gray2;
-  color: $text;
+  background-color: $color2;
+  color: $textDark;
 }
 
 #box-message__body {
   outline: none;
-  box-shadow: 0 0 2px 1px $gray2;
+  box-shadow: $boxShadow;
   border: none;
-  border-radius: 5px;
+  border-radius: $borderRadius;
   padding: 10px;
 }
 
@@ -169,10 +169,10 @@
   border: none;
   outline: none;
   padding: 5px;
-  border-radius: 5px;
+  border-radius: $borderRadius;
   //box-shadow: 0 0 2px 1px $gray1;
-  background-color: $iconsBg;
-  color: $textSelected;
+  background-color: $color5;
+  color: $textLight;
 }
 
 
@@ -197,13 +197,13 @@
 }
 
 .box-data__table-body {
-  border: 2px solid $textBg;
+  border: 2px solid $color5;
 }
 
 .box-data__table-head {
   @include layoutGrid;
-  background-color: $textBg;
-  color: $textSelected;
+  background-color: $color5;
+  color: $textLight;
 }
 
 .table-body__user {
@@ -235,16 +235,17 @@
   }
 
   tr:nth-child(even) {
-    background-color: $gray2;
+    background-color: rgba($color4, 0.8);
+    color: $color2;
   }
 
   tr:hover{
-    background-color: $iconsBg;
-    color: $textSelected;
+    background-color: $color5;
+    color: $textLight;
   }
   tr:active {
     background-color: #00c5dc;
-    color: $textSelected;
+    color: $textLight;
   }
 }
 
@@ -266,8 +267,8 @@
 .table-searchbox__search {
   outline: none;
   border:none;
-  border-radius: 5px;
-  box-shadow: 0 0 2px 2px $gray2;
+  border-radius: $borderRadius;
+  box-shadow:$boxShadow;
   padding: 5px;
   //margin-bottom: 5px;
 }
@@ -278,7 +279,7 @@
   background-color: $iconsBg;
   color: $iconsSelected;
   padding: 5px;
-  border-radius: 5px;
+  border-radius: $borderRadius;
   i {
     font-size: 20px;
   }
@@ -292,7 +293,7 @@
 .selected-user__added, .selected-form__added {
   @include layoutGrid;
   background-color: $background;
-  color: $text;
+  color: $textDark;
   //justify-self: center;
   align-self: center;
   height: 40px;
@@ -308,7 +309,7 @@
 }
 
 #box-message__alert {
-  color: $textRed;
+  color: $textAlert;
   visibility: hidden;
 }
 

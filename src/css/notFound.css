@@ -40,15 +40,30 @@ body {
   row-gap: 0;
 }
 
-#box-charts {
-  display: grid;
-  grid-template-columns: 1fr;
-  align-items: center;
-  justify-items: center;
-  grid-template-rows: repeat(2, 1fr);
-  justify-items: stretch;
-  align-items: stretch;
-  margin-top: 45px;
+* {
+  font-family: Helvi, Arial, sans-serif;
 }
 
-/*# sourceMappingURL=stats.css.map */
+body {
+  grid-template-rows: 100%;
+}
+
+div {
+  display: grid;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  justify-items: center;
+}
+
+#cod-error {
+  font-weight: bolder;
+  font-size: 60px;
+}
+
+#desc-error {
+  font-size: 25px;
+}
+
+/*# sourceMappingURL=notFound.css.map */

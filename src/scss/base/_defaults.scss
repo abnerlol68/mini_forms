@@ -1,6 +1,9 @@
 @import "../utils/colors";
 @import "../utils/fonts";
 
+$borderRadius: 5px;
+$boxShadow: 0 0 8px 2px $color4;
+
 * {
   font-family: $font1;
 }
@@ -18,7 +21,7 @@ body {
   height: 100%;
   width: 100%;
   background-color: $background;
-  color: $text;
+  color: $textDark;
   padding: 0;
   margin: 0;
   grid-template-rows: 45px auto 160px;

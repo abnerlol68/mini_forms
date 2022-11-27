@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="src/css/header.css">
     <link rel="stylesheet" href="src/css/footer.css">
     <link rel="stylesheet" href="src/css/stats.css">
+    <script src="<?= URL . 'src/View/Stats.js' ?>" type="module"></script>
 <!--    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>-->
 </head>
 <body>
@@ -21,8 +22,9 @@
 require_once ROOT . "src/View/Partials/Header.php";
 ?>
     <div id="box-charts">
-        <iframe src="<?= URL . 'src/View/ChartForms.html' ?>" frameborder="0" class="doc-charts"></iframe>
-        <iframe src="<?= URL . 'src/View/ChartForms.html' ?>" frameborder="0" class="doc-charts"></iframe>
+        <div id="box-charts__complete-forms"></div>
+<!--        <iframe src="--><?//= URL . 'src/View/ChartForms.html' ?><!--" frameborder="0" class="doc-charts"></iframe>-->
+<!--        <iframe src="--><?//= URL . 'src/View/ChartForms.html' ?><!--" frameborder="0" class="doc-charts"></iframe>-->
     </div>
 <footer>
     <?php

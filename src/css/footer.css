@@ -32,8 +32,8 @@ body {
   display: grid;
   height: 100%;
   width: 100%;
-  background-color: #f3f6fd;
-  color: #000;
+  background-color: #F1FAEE;
+  color: #1D3557;
   padding: 0;
   margin: 0;
   grid-template-rows: 45px auto 160px;
@@ -48,7 +48,7 @@ body {
 footer {
   display: grid;
   align-self: end;
-  background-color: #000;
+  background-color: #1D3557;
   color: #fff;
 }
 footer #footer {

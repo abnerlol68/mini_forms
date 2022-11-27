@@ -13,7 +13,7 @@ input[type=text] {
   padding: 0 8px;
   font-size: 1.4rem;
   border-radius: 6px;
-  border: 2px solid u.$text;
+  border: 2px solid $textDark;
 }
 
 select {
@@ -21,14 +21,14 @@ select {
   text-align: center;
   text-transform: uppercase;
   background-color: u.$background-one;
-  border: 1px solid u.$text;
+  border: 1px solid $textDark;
   border-radius: 0.8rem;
 }
 
 button {
   color: u.$background-two;
   background-color: u.$text-active;
-  border: 1px solid u.$text;
+  border: 1px solid $textDark;
 }
 
 button:hover {

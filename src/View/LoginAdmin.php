@@ -73,7 +73,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <input class="login_inputs" type="password" name="password" id="password" required=""
                            autocomplete="off" maxlength="15">
                     <label class="login_labels" for="password">Password</label>
-                    <a id="show_password" onclick="show()" href="<?= URL . '/' ?>">mostrar</a>
+                    <span id="show_password" onclick="show()">mostrar</span>
                 </div>
             </div>
             <button type="submit" id="login_button">
@@ -93,8 +93,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 <script>
     function show() {
+        const labelShowing = document.getElementById("show_password");
         const inputPassword = document.getElementById("password");
         const type = inputPassword.type;
         inputPassword.type = (type === "password") ? "text" : "password";
+        labelShowing.innerText = (type === "password") ? "ocultar" : "mostrar";
     }
 </script>

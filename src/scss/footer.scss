@@ -8,8 +8,8 @@ footer {
   display: grid;
   align-self: end;
   //height: 260px;
-  background-color: $icons;
-  color: $iconsSelected;
+  background-color: $color5;
+  color: $textLight;
   #footer {
     @include layoutGrid;
     @include adjustGrid;
@@ -18,7 +18,7 @@ footer {
 }
 
 .footer {
-  color: $textSelected;
+  color: $textLight;
 }
 
 #logos {
@@ -81,7 +81,7 @@ footer {
 }
 
 .title-footers {
-  border-bottom: 1px $textSelected solid;
+  border-bottom: 1px $textLight solid;
   padding: 2px 40px;
 }
 
