@@ -1,11 +1,31 @@
 @import "./base/defaults";
 
+#box-stats {
+  @include layoutGrid;
+  height: auto;
+  row-gap: 1rem;
+}
+
 #box-charts {
   @include layoutGrid;
-  //@include adjustGrid;
-  grid-template-rows: repeat(2,1fr);
+  width: 98%;
+  justify-items: stretch;
+  align-items: center;
+  grid-template-rows: repeat(2,370px);
+  grid-row-gap: 20px;
+  border: none;
+  background-color: $color3;
+  border-radius: $borderRadius;
+  box-shadow: $boxShadow;
+}
+
+.charts {
+  @include layoutGrid;
   justify-items: stretch;
   align-items: stretch;
-  margin-top: 45px;
-  //align-self: stretch;
+  height: 95%;
+}
+
+.doc-charts {
+  border: none;
 }

@@ -1,6 +1,12 @@
 @font-face {
   font-family: Helvi;
-  src: url("../Libs/fonts/Helvetica.ttf");
+  src: url("../Libs/fonts/Helvetica/Helvetica.woff2") format("woff2"), url("../Libs/fonts/Helvetica/Helvetica.ttf") format("truetype"), url("../Libs/fonts/Helvetica/Helvetica.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: typcn;
+  src: url("../Libs/fonts/Typicons/typicons.eot") format("embedded-opentype"), url("../Libs/fonts/Typicons/typicons.woff2") format("woff2"), url("../Libs/fonts/Typicons/typicons.woff") format("woff"), url("../Libs/fonts/Typicons/typicons.ttf") format("truetype"), url("../Libs/fonts/Typicons/typicons.svg") format("svg");
 }
 @font-face {
   font-family: arima;
@@ -11,10 +17,6 @@
   font-family: bitter;
   src: url("../Libs/fonts/Bitter-VariableFont_wght.ttf");
   font-weight: 400;
-}
-@font-face {
-  font-family: typcn;
-  src: url("../Libs/fonts/typicons.ttf");
 }
 * {
   font-family: Helvi, Arial, sans-serif;
@@ -40,15 +42,43 @@ body {
   row-gap: 0;
 }
 
+#box-stats {
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: center;
+  justify-items: center;
+  height: auto;
+  row-gap: 1rem;
+}
+
 #box-charts {
   display: grid;
   grid-template-columns: 1fr;
   align-items: center;
   justify-items: center;
-  grid-template-rows: repeat(2, 1fr);
+  width: 98%;
+  justify-items: stretch;
+  align-items: center;
+  grid-template-rows: repeat(2, 370px);
+  grid-row-gap: 20px;
+  border: none;
+  background-color: #A8DADC;
+  border-radius: 5px;
+  box-shadow: 0 0 8px 2px #457B9D;
+}
+
+.charts {
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: center;
+  justify-items: center;
   justify-items: stretch;
   align-items: stretch;
-  margin-top: 45px;
+  height: 95%;
+}
+
+.doc-charts {
+  border: none;
 }
 
 /*# sourceMappingURL=stats.css.map */

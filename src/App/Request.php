@@ -20,7 +20,7 @@ class Request
         /*==== Request for Forms ====*/
 
         if ($_SERVER['REQUEST_METHOD'] == 'GET' && $_GET['req'] == 'get_forms') {
-            $forms = [...$this->conn->query('SELECT * FROM forms')];
+            $forms = [...$this->conn->query('CALL get_forms();')];
             echo json_encode($forms);
             http_response_code(200);
             return;
@@ -29,7 +29,7 @@ class Request
         if ($_SERVER['REQUEST_METHOD'] == 'POST' && $_GET['req'] == 'add_form') {
             $content_req = json_decode(file_get_contents('php://input'), true);
             $stm = $this->conn->prepare(
-                'INSERT INTO forms (title_form, user_admin) VALUES (:title, :author)'
+                'CALL add_form(:title, :author);'
             );
             $stm->execute([
                 'title' => $content_req['title'],
@@ -43,7 +43,7 @@ class Request
 
         if ($_SERVER['REQUEST_METHOD'] == 'DELETE' && $_GET['req'] == 'remove_form') {
             $content_req = json_decode(file_get_contents('php://input'), true);
-            $stm = $this->conn->prepare('DELETE FROM forms WHERE id_form = :id');
+            $stm = $this->conn->prepare('CALL remove_form(:id);');
             $stm->execute(['id' => $content_req['id']]);
             http_response_code(200);
             return;
@@ -51,7 +51,7 @@ class Request
 
         if ($_SERVER['REQUEST_METHOD'] == 'PUT' && $_GET['req'] == 'update_form') {
             $content_req = json_decode(file_get_contents('php://input'), true);
-            $stm = $this->conn->prepare('UPDATE forms SET title_form = :title WHERE id_form = :id');
+            $stm = $this->conn->prepare('CALL update_form(:title, :id);');
             $stm->execute([
                 'id' => $content_req['id'],
                 'title' => $content_req['title'],
@@ -198,7 +198,7 @@ class Request
         }
 
         if ($_SERVER['REQUEST_METHOD'] == 'GET' && $_GET['req'] == 'select_users') {
-            $graduates = [...$this->conn->query('SELECT * FROM graduates')];
+            $graduates = [...$this->conn->query('CALL select_graduate()')];
             echo json_encode($graduates);
             http_response_code(200);
             return;
@@ -212,16 +212,16 @@ class Request
             return;
         }
 
-        if ($_SERVER['REQUEST_METHOD'] == 'POST' && $_GET['req'] == 'start_session') {
+//        if ($_SERVER['REQUEST_METHOD'] == 'POST' && $_GET['req'] == 'start_session') {
+//
+//        }
 
-        }
-
-        if ($_SERVER['REQUEST_METHOD'] == 'GET' && $_GET['req'] == 'close_session') {
-            session_destroy();
-            echo "Session cerrada correctamente";
-//            header('Location: ' . URL);
-            http_response_code(200);
-        }
+//        if ($_SERVER['REQUEST_METHOD'] == 'GET' && $_GET['req'] == 'close_session') {
+//            session_destroy();
+//            echo "Session cerrada correctamente";
+////            header('Location: ' . URL);
+//            http_response_code(200);
+//        }
 
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST' && $_GET['req'] == 'insert_users') {
@@ -259,6 +259,14 @@ class Request
             http_response_code(201);
             return;
         }
+
+        if ($_SERVER['REQUEST_METHOD'] == 'GET' && $_GET['req'] == 'charting') {
+            $formComplete = [...$this->conn->query('CALL charting()')];
+            echo json_encode($formComplete);
+            http_response_code(200);
+            return;
+        }
+
 
         echo 'Operation not available';
         http_response_code(400);
