@@ -212,17 +212,6 @@ class Request
             return;
         }
 
-//        if ($_SERVER['REQUEST_METHOD'] == 'POST' && $_GET['req'] == 'start_session') {
-//
-//        }
-
-//        if ($_SERVER['REQUEST_METHOD'] == 'GET' && $_GET['req'] == 'close_session') {
-//            session_destroy();
-//            echo "Session cerrada correctamente";
-////            header('Location: ' . URL);
-//            http_response_code(200);
-//        }
-
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST' && $_GET['req'] == 'insert_users') {
             $content_req = json_decode(file_get_contents('php://input'), true);
@@ -261,8 +250,32 @@ class Request
         }
 
         if ($_SERVER['REQUEST_METHOD'] == 'GET' && $_GET['req'] == 'charting') {
-            $formComplete = [...$this->conn->query('CALL charting()')];
+            $formComplete = [...$this->conn->query('CALL charting();')];
             echo json_encode($formComplete);
+            http_response_code(200);
+            return;
+        }
+
+        if ($_SERVER['REQUEST_METHOD'] == 'POST' && $_GET['req'] == 'charting_answers') {
+            $content_req = json_decode(file_get_contents('php://input'), true);
+            $stm = $this->conn->prepare("CALL charting_answers(:id_quest);");
+            $stm->execute([
+                'id_quest' => $content_req['idQuest'],
+            ]);
+            $quests = $stm->fetchAll(PDO::FETCH_ASSOC);
+            echo json_encode($quests);
+            http_response_code(200);
+            return;
+        }
+
+        if ($_SERVER['REQUEST_METHOD'] == 'POST' && $_GET['req'] == 'quest_type') {
+            $content_req = json_decode(file_get_contents('php://input'), true);
+            $stm = $this->conn->prepare("CALL quest_type(:id_form);");
+            $stm->execute([
+                'id_form' => $content_req['idForm'],
+            ]);
+            $questsGraphicAble = $stm->fetchAll(PDO::FETCH_ASSOC);
+            echo json_encode($questsGraphicAble);
             http_response_code(200);
             return;
         }

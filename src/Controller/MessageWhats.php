@@ -6,8 +6,8 @@ use Twilio\Rest\Client;
 
 $mess = $_SESSION['userMessage'];
 
-$sid    = "ACe09fe34aa0d7094abb76aa449205a397";
-$token  = "5766c9c2cdf8d07259ee5d5c1463e7f1";
+$sid = "ACe09fe34aa0d7094abb76aa449205a397";
+$token = "5766c9c2cdf8d07259ee5d5c1463e7f1";
 $twilio = new Client($sid, $token);
 
 $message = $twilio->messages

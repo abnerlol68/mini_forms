@@ -51,12 +51,12 @@ function loadFile() {
 }
 
 function validateStructCSV(file) {
-    const header_table = ['nombre','apellido paterno','apellido materno','profesión','correo','teléfono','año de egreso'];
+    const header_table = ['nombre', 'apellido paterno', 'apellido materno', 'profesión', 'correo', 'teléfono', 'año de egreso'];
     const rows_csv = file.split(/\r?\n|\r/);
     const header_csv = rows_csv[0].split(/,/);
     for (let i = 0; i < header_csv.length; i++) {
         let data_header = String(header_csv[i]).toLowerCase();
-        if ( header_table.indexOf(data_header) === -1) {
+        if (header_table.indexOf(data_header) === -1) {
             return false;
         }
     }
@@ -194,7 +194,7 @@ function addFormSelected(rowForm) {
         displayForms.className = 'selected-form__added';
         displayForms.innerText = infoForms[1].innerText;
         displayForms.append(btnRemoveForm);
-        btnRemoveForm.onclick = () => removeFormSelected(displayForms,infoForms[0].innerText, counterForms);
+        btnRemoveForm.onclick = () => removeFormSelected(displayForms, infoForms[0].innerText, counterForms);
         containerSelectedForms.appendChild(displayForms);
         counterForms.innerText = String(Number(counterForms.innerText) + 1);
     }

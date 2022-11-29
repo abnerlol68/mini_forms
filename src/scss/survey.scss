@@ -59,8 +59,13 @@ body {
   font-size: 18px;
 }
 
-.radio-custom { border-radius: 100%;}
-.check-custom {border-radius: $borderRadius}
+.radio-custom {
+  border-radius: 100%;
+}
+
+.check-custom {
+  border-radius: $borderRadius
+}
 
 input[type=radio], input[type=checkbox] {
   position: absolute;

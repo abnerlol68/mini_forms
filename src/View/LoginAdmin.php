@@ -1,36 +1,38 @@
 <?php
+
 use App\Database;
+
 $db = new Database();
 $conn = $db->get_conn();
 
 $errMsg = null;
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-  if (empty($_POST['username']) || empty($_POST['password'])) {
-    $errMsg = "Please fill all the fields.";
-  } else {
-      $statement = $conn->prepare("SELECT user_admin, password_admin FROM admins WHERE user_admin = :user_admin");
-    $statement->execute([
-      'user_admin' => $_POST['username']
-    ]);
-    
-    if ($statement->rowCount() == 0) {
-      $errMsg = "Invalid credentials.";
+    if (empty($_POST['username']) || empty($_POST['password'])) {
+        $errMsg = "Please fill all the fields.";
     } else {
-      $user = $statement->fetch(PDO::FETCH_ASSOC);
+        $statement = $conn->prepare("SELECT user_admin, password_admin FROM admins WHERE user_admin = :user_admin");
+        $statement->execute([
+            'user_admin' => $_POST['username']
+        ]);
 
-      if ($_POST["password"] != $user["password_admin"]) {
-        $errMsg = "Invalid credentials.";
-      } else {
-        session_start();
+        if ($statement->rowCount() == 0) {
+            $errMsg = "Invalid credentials.";
+        } else {
+            $user = $statement->fetch(PDO::FETCH_ASSOC);
 
-        unset($user["password_admin"]);
-        $_SESSION["user"] = $user;
+            if ($_POST["password"] != $user["password_admin"]) {
+                $errMsg = "Invalid credentials.";
+            } else {
+                session_start();
 
-        header('Location: ' . constant('URL') . 'home');
-      }
+                unset($user["password_admin"]);
+                $_SESSION["user"] = $user;
+
+                header('Location: ' . constant('URL') . 'home');
+            }
+        }
     }
-  }
 }
 ?>
 
@@ -42,9 +44,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <link rel="stylesheet" href="src/css/login.css">
-    <link rel="stylesheet" href="src/Libs/icons/font/typicons.css"/>
-    <link rel="shortcut icon" href="src/img/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="<?= URL . 'src/css/login.css' ?>">
+    <link rel="stylesheet" href="<?= URL . 'src/Libs/icons/font/typicons.css' ?>"/>
+    <link rel="stylesheet" href="<?= URL . 'src/Libs/fonts/Helvetica/style.css' ?>"/>
+    <link rel="stylesheet" href="<?= URL . 'src/Libs/fonts/Bitter-Regular/style.css' ?>"/>
+    <link rel="shortcut icon" href="<?= URL . 'src/img/favicon.png" type="image/x-icon' ?>">
 </head>
 <body>
 <div id="background">

@@ -1,17 +1,17 @@
 {
-    "name": "itsoeh/miniforms",
-    "description": "System to generate and administrate surveys to graduates from itsoeh",
-    "type": "project",
-    "autoload": {
-        "psr-4": {
-            "App\\": "src/App/"
-        }
-    },
-    "require": {
-        "ext-pdo": "*",
-        "twilio/sdk": "^6.43",
-        "vlucas/phpdotenv": "^5.5",
-        "phpmailer/phpmailer": "^6.6",
-        "ext-json": "*"
+  "name": "itsoeh/miniforms",
+  "description": "System to generate and administrate surveys to graduates from itsoeh",
+  "type": "project",
+  "autoload": {
+    "psr-4": {
+      "App\\": "src/App/"
     }
+  },
+  "require": {
+    "ext-pdo": "*",
+    "twilio/sdk": "^6.43",
+    "vlucas/phpdotenv": "^5.5",
+    "phpmailer/phpmailer": "^6.6",
+    "ext-json": "*"
+  }
 }

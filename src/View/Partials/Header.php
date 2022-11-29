@@ -1,14 +1,11 @@
 <?php
 $uriRequest = $_SERVER['REQUEST_URI'];
 $flag = 0;
-if ($uriRequest === '/mini_forms/home' || $uriRequest === '/mini_forms/')
-{
+if ($uriRequest === '/mini_forms/home' || $uriRequest === '/mini_forms/') {
     $flag = 1;
-} elseif ($uriRequest === '/mini_forms/data')
-{
+} elseif ($uriRequest === '/mini_forms/data') {
     $flag = 2;
-} elseif ($uriRequest === '/mini_forms/stats')
-{
+} elseif ($uriRequest === '/mini_forms/stats') {
     $flag = 3;
 }
 
@@ -22,19 +19,19 @@ if ($uriRequest === '/mini_forms/home' || $uriRequest === '/mini_forms/')
         <i class="typcn typcn-th-menu-outline"></i>
     </div>
     <div id="menus" class="menu menu_collapsed">
-        <label for="nav_item_home" class="nav_item <?= ($flag===1)?'active':'' ?>">
+        <label for="nav_item_home" class="nav_item <?= ($flag === 1) ? 'active' : '' ?>">
             <a href="<?= URL . 'home' ?>" id="nav_item_home" class="nav_link"">
             <i class="item_icon typcn typcn-home-outline"></i>
             Inicio
             </a>
         </label>
-        <label for="nav_item_data" class="nav_item <?= ($flag===2)?'active':'' ?>">
+        <label for="nav_item_data" class="nav_item <?= ($flag === 2) ? 'active' : '' ?>">
             <a href="<?= URL . 'data' ?>" id="nav_item_data" class="nav_link"">
             <i class="item_icon typcn typcn-document-text"></i>
             Datos
             </a>
         </label>
-        <label for="nav_item_stats" class="nav_item <?= ($flag===3)?'active':'' ?>">
+        <label for="nav_item_stats" class="nav_item <?= ($flag === 3) ? 'active' : '' ?>">
             <a href="<?= URL . 'stats' ?>" id="nav_item_stats" class="nav_link"">
             <i class="item_icon typcn typcn-chart-pie-outline"></i>
             Estadisticas
@@ -44,7 +41,7 @@ if ($uriRequest === '/mini_forms/home' || $uriRequest === '/mini_forms/')
             <label for="activeOptions" class="box-user__icon typcn typcn-user"></label>
             <input type="checkbox" name="activeOptions" id="activeOptions">
             <div class="box-user__options">
-                <a href="<?= URL . 'close_session' ?>" >Cerrar sesion</a>
+                <a href="<?= URL . 'close_session' ?>">Cerrar sesion</a>
             </div>
         </div>
     </div>

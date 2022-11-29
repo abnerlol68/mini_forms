@@ -10,6 +10,7 @@ footer {
   //height: 160px;
   background-color: $color5;
   color: $textLight;
+
   #footer {
     @include layoutGrid;
     @include adjustGrid;
@@ -28,16 +29,16 @@ footer {
   align-items: center;
 }
 
-#content-footer{
+#content-footer {
   @include layoutGrid;
   @include adjustGrid;
   grid-template-columns: repeat(3, 1fr);
 }
 
-@mixin align{
+@mixin align {
   display: grid;
   align-items: center;
-  justify-items: center ;
+  justify-items: center;
   .typcn {
     font-size: $sizeIcons;
   }
@@ -52,18 +53,22 @@ footer {
 
 #project {
   @include align;
-  #project-content{
+
+  #project-content {
     @include layoutGrid;
+
     #project-item {
-  @include itemsAlign;
+      @include itemsAlign;
     }
   }
 }
 
 #socials {
   @include align;
+
   #socials-content {
     @include layoutGrid;
+
     #socials-item {
       @include itemsAlign;
     }
@@ -72,8 +77,10 @@ footer {
 
 #feedback {
   @include align;
+
   #feedback-content {
     @include layoutGrid;
+
     #feedback-item {
       @include itemsAlign;
     }
@@ -86,20 +93,21 @@ footer {
 }
 
 @media (max-width: 1000px) {
-  #feedback{
+  #feedback {
     display: none;
   }
-  #content-footer{
+  #content-footer {
     @include layoutGrid;
     @include adjustGrid;
     grid-template-columns: repeat(2, 1fr);
   }
 }
+
 @media (max-width: 750px) {
-  #socials{
+  #socials {
     display: none;
   }
-  #content-footer{
+  #content-footer {
     @include layoutGrid;
     @include adjustGrid;
     grid-template-columns: 1fr;
@@ -107,7 +115,7 @@ footer {
 }
 
 @media (max-width: 500px) {
-  #project{
+  #project {
     display: none;
   }
 

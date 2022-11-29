@@ -5,7 +5,7 @@ $borderRadius: 5px;
 $boxShadow: 0 0 8px 2px $color4;
 
 * {
-  font-family: $font1;
+  font-family: $font;
 }
 
 html {
@@ -55,12 +55,12 @@ $navHeight: 45px;
   width: 100%;
 }
 
-@mixin setSize($widthP, $heightP,){
+@mixin setSize($widthP, $heightP,) {
   height: $heightP;
   width: $widthP;
 }
 
-@mixin setSizeS($sizeS){
+@mixin setSizeS($sizeS) {
   height: $sizeS;
   width: $sizeS;
 }

@@ -6,12 +6,12 @@ require_once 'Config.php';
 use App\Application;
 
 try {
-  $app = new Application();
-  $app->run();
+    $app = new Application();
+    $app->run();
 } catch (\Throwable $th) {
-  echo '<pre>';
+    echo '<pre>';
     echo $th;
-  echo '</pre>';
+    echo '</pre>';
 }
 
 ?>

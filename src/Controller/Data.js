@@ -9,7 +9,7 @@ export async function sendMessage(msj, idsForms) {
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ msj, idsForms })
+        body: JSON.stringify({msj, idsForms})
     }).then(r => r.text());
 }
 

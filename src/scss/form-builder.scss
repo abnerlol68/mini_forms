@@ -1,7 +1,7 @@
 @import "./base/defaults";
 //@import "./utils/backgroundAnimated";
 
-body{
+body {
   grid-template-rows: 20px auto;
 }
 
@@ -13,12 +13,12 @@ body{
 
 .quest-container {
   @include layoutGrid;
-  grid-template-columns: repeat(3,1fr);
+  grid-template-columns: repeat(3, 1fr);
   grid-column-gap: 3rem;
 }
 
 .quest {
-   @include layoutGrid;
+  @include layoutGrid;
   padding: 20px;
   margin: 33px 0;
   grid-template-columns: 2fr 1fr;
@@ -39,7 +39,9 @@ body{
 }
 
 
-.quest__add { padding: 10px }
+.quest__add {
+  padding: 10px
+}
 
 .quest__opt-set {
   @include layoutGrid;
@@ -97,5 +99,5 @@ $radiusTitle: 5px;
   background-color: $color5;
   padding: 10px;
   border-radius: $borderRadius;
-  cursor:  pointer;
+  cursor: pointer;
 }

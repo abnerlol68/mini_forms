@@ -9,11 +9,13 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Datos</title>
-    <link rel="stylesheet" href="src/Libs/icons/font/typicons.css">
-    <link rel="stylesheet" href="src/css/header.css">
-    <link rel="stylesheet" href="src/css/data.css">
-    <link rel="stylesheet" href="src/css/footer.css">
-    <link rel="shortcut icon" href="src/img/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="<?= URL . 'src/Libs/icons/font/typicons.css' ?>">
+    <link rel="stylesheet" href="<?= URL . 'src/Libs/fonts/Helvetica/style.css' ?>"/>
+    <link rel="stylesheet" href="<?= URL . 'src/Libs/fonts/Bitter-Regular/style.css' ?>"/>
+    <link rel="stylesheet" href="<?= URL . 'src/css/header.css' ?>">
+    <link rel="stylesheet" href="<?= URL . 'src/css/data.css' ?>">
+    <link rel="stylesheet" href="<?= URL . 'src/css/footer.css' ?>">
+    <link rel="shortcut icon" href="<?= URL . 'src/img/favicon.png' ?>" type="image/x-icon">
     <script src="<?= URL . 'src/View/Data.js' ?>" type="module"></script>
 </head>
 <body>
@@ -30,26 +32,27 @@ require_once ROOT . "src/View/Partials/Header.php";
             <div id="box-data-user" class="box-data__container">
                 <div id="box-data__select-head">
                     <div class="box-data__table-searchbox">
-                        <select  class="filter" id="table-searchbox__filter">
+                        <select class="filter" id="table-searchbox__filter">
                             <option value="name_graduate">Nombre</option>
                             <option value="last_name_graduate">Apellido Paterno</option>
                             <option value="mothers_surname">Apellido Materno</option>
                             <option value="email_graduate">Correo</option>
                             <option value="phone_graduate">Telefono</option>
                         </select>
-                        <input type="search" name="searched" id="search-users" class="table-searchbox__search"  placeholder="Dime qué buscar...">
-<!--                        <button class="table-searchbox__button"><i class="typcn typcn-zoom"></i></button>-->
+                        <input type="search" name="searched" id="search-users" class="table-searchbox__search"
+                               placeholder="Dime qué buscar...">
+                        <!--                        <button class="table-searchbox__button"><i class="typcn typcn-zoom"></i></button>-->
                     </div>
-                        <select name="carriers" id="carriers" class="filter">
-                            <option value="void">-- Carrera --</option>
-                            <option value="Sistemas Computacionales">Ing. en Sistemas</option>
-                            <option value="Electromecánica">Ing. en Electromecánica</option>
-                            <option value="TICS">Ing. en Telecomunicaciones</option>
-                            <option value="Arquitectura">Arquitectura</option>
-                            <option value="Logística">Ing. em Logística</option>
-                            <option value="Alimentarias">Ing. en Alimentarias</option>
-                            <option value="Gestión Empresarial">Gestión Empresarial</option>
-                        </select>
+                    <select name="carriers" id="carriers" class="filter">
+                        <option value="void">-- Carrera --</option>
+                        <option value="Sistemas Computacionales">Ing. en Sistemas</option>
+                        <option value="Electromecánica">Ing. en Electromecánica</option>
+                        <option value="TICS">Ing. en Telecomunicaciones</option>
+                        <option value="Arquitectura">Arquitectura</option>
+                        <option value="Logística">Ing. em Logística</option>
+                        <option value="Alimentarias">Ing. en Alimentarias</option>
+                        <option value="Gestión Empresarial">Gestión Empresarial</option>
+                    </select>
                 </div>
                 <div class="box-data__table-head head__users">
                     <p>Nombre(s)</p>
@@ -72,9 +75,11 @@ require_once ROOT . "src/View/Partials/Header.php";
             <div id="box-table__user-options">
                 <input type="file" name="file-chooser" id="file-chooser">
                 <label for="file-chooser" id="box-message__button-upload" class="box-message__button">Subir csv</label>
-<!--                <button id="box-message__button-download" class="box-message__button">Descargar csv</button>-->
+                <!--                <button id="box-message__button-download" class="box-message__button">Descargar csv</button>-->
                 <label for="selected-users__onclick" id="box-message_label-onclick">
-                    <span id="box-message__button-watch" class="box-message__button"><span id="selected-users__tag">Ver</span> seleccionados (<span id="selected-users__counter">0</span>)</span>
+                    <span id="box-message__button-watch" class="box-message__button"><span
+                                id="selected-users__tag">Ver</span> seleccionados (<span
+                                id="selected-users__counter">0</span>)</span>
                 </label>
             </div>
         </div>
@@ -83,8 +88,9 @@ require_once ROOT . "src/View/Partials/Header.php";
             <div id="box-data-forms" class="box-data__container">
                 <div id="box-data__select-head-forms">
                     <div class="box-data__table-searchbox">
-                        <input type="search" name="searched" id="search-forms" class="table-searchbox__search" placeholder="Dime qué buscar...">
-<!--                        <button class="table-searchbox__button"><i class="typcn typcn-zoom"></i></button>-->
+                        <input type="search" name="searched" id="search-forms" class="table-searchbox__search"
+                               placeholder="Dime qué buscar...">
+                        <!--                        <button class="table-searchbox__button"><i class="typcn typcn-zoom"></i></button>-->
                     </div>
                 </div>
                 <div class="box-data__table-head">
@@ -101,12 +107,15 @@ require_once ROOT . "src/View/Partials/Header.php";
                     <div id="selected-forms"></div>
                 </div>
                 <label for="selected-forms__onclick" id="selected-forms__options">
-                    <span id="box-message__button-watch-forms" class="box-message__button"><span id="selected-forms__tag">Ver</span> seleccionados (<span id="selected-forms__counter">0</span>)</span>
+                    <span id="box-message__button-watch-forms" class="box-message__button"><span
+                                id="selected-forms__tag">Ver</span> seleccionados (<span
+                                id="selected-forms__counter">0</span>)</span>
                 </label>
             </div>
             <div id="box-message">
                 <div id="box-message__head">
-                    <textarea name="box-message__text" id="box-message__body" required placeholder="Redacta un mensaje amable al egresado :)"></textarea>
+                    <textarea name="box-message__text" id="box-message__body" required
+                              placeholder="Redacta un mensaje amable al egresado :)"></textarea>
                     <button id="box-message__button-send" class="box-message__button">Enviar</button>
                 </div>
                 <div id="box-message__alert">
@@ -118,7 +127,7 @@ require_once ROOT . "src/View/Partials/Header.php";
     </div>
 
     <div id="box-options">
-<!--        <div id="box-message__forms-selected"></div>-->
+        <!--        <div id="box-message__forms-selected"></div>-->
 
 
     </div>
@@ -154,7 +163,7 @@ require_once ROOT . "src/View/Partials/Header.php";
 
 <footer>
     <?php
-    require_once  ROOT . "src/View/Partials/Footer.php";
+    require_once ROOT . "src/View/Partials/Footer.php";
     ?>
 </footer>
 </body>

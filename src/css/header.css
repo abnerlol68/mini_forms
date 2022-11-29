@@ -1,25 +1,5 @@
-@font-face {
-  font-family: Helvi;
-  src: url("../Libs/fonts/Helvetica/Helvetica.woff2") format("woff2"), url("../Libs/fonts/Helvetica/Helvetica.ttf") format("truetype"), url("../Libs/fonts/Helvetica/Helvetica.woff") format("woff");
-  font-weight: 400;
-  font-style: normal;
-}
-@font-face {
-  font-family: typcn;
-  src: url("../Libs/fonts/Typicons/typicons.eot") format("embedded-opentype"), url("../Libs/fonts/Typicons/typicons.woff2") format("woff2"), url("../Libs/fonts/Typicons/typicons.woff") format("woff"), url("../Libs/fonts/Typicons/typicons.ttf") format("truetype"), url("../Libs/fonts/Typicons/typicons.svg") format("svg");
-}
-@font-face {
-  font-family: arima;
-  src: url("../Libs/fonts/Arima-VariableFont_wght.ttf");
-  font-weight: 500;
-}
-@font-face {
-  font-family: bitter;
-  src: url("../Libs/fonts/Bitter-VariableFont_wght.ttf");
-  font-weight: 400;
-}
 * {
-  font-family: Helvi, Arial, sans-serif;
+  font-family: "Helvetica", Arial, sans-serif;
 }
 
 html {
@@ -66,7 +46,7 @@ body {
 }
 
 .navbar_logo {
-  font-family: bitter, "Arial Black";
+  font-family: "Bitter", "Arial Black";
   font-weight: bold;
   color: #fff;
   margin: 0 0 0 5px;
@@ -157,7 +137,7 @@ body {
 }
 .box-user__icon {
   font-size: 30px;
-  font-family: typcn;
+  font-family: "typicons";
   cursor: pointer;
   background-color: white;
   padding: 0;

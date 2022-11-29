@@ -35,7 +35,7 @@
 
 #box-table__user-options {
   @include layoutGrid;
-  grid-template-columns: repeat(2,1fr);
+  grid-template-columns: repeat(2, 1fr);
 }
 
 #box-data-user {
@@ -52,13 +52,13 @@
   grid-template-rows: 15% 10% auto 15%;
 }
 
-#selected-users, #selected-forms{
+#selected-users, #selected-forms {
   display: none;
   margin: {
     top: -100px;
     bottom: 5px;
   }
-  background-color: rgba($color3,0.5);
+  background-color: rgba($color3, 0.5);
   width: 95%;
   justify-self: center;
   height: 95px !important;
@@ -80,7 +80,7 @@
   grid-template-rows: 100%;
 }
 
-#selected-users__onclick, #selected-forms__onclick{
+#selected-users__onclick, #selected-forms__onclick {
   position: absolute;
   left: -100%;
 }
@@ -130,12 +130,12 @@
   justify-self: end;
 }
 
-#box-data__select-head, #box-data__select-head-forms{
+#box-data__select-head, #box-data__select-head-forms {
   @include layoutGrid;
 }
 
 #box-data__select-head {
-  grid-template-columns: repeat(2,1fr);
+  grid-template-columns: repeat(2, 1fr);
 }
 
 #box-data__select-head-forms {
@@ -178,19 +178,22 @@
 
 .box-data__table-selectors {
   @include layoutGrid;
-  grid-template-columns: repeat(2,1fr);
+  grid-template-columns: repeat(2, 1fr);
+
   div {
     cursor: pointer;
+
     i {
       font-size: 25px;
     }
+
     font-size: 15px;
   }
 }
 
 ////// General Styles for the tables ///////////////////
 
-.box-data__container, .box-data__table-body{
+.box-data__container, .box-data__table-body {
   display: grid;
   justify-items: stretch;
   align-items: stretch;
@@ -211,6 +214,7 @@
   width: auto;
   overflow-y: auto;
 }
+
 .table-body__forms {
   display: grid;
   justify-self: stretch;
@@ -225,9 +229,10 @@
 }
 
 
-#table-box-user__body, #table-box-forms__body{
+#table-box-user__body, #table-box-forms__body {
 
   border-collapse: collapse;
+
   tr {
     @include layoutGrid;
     background-color: $background;
@@ -239,10 +244,11 @@
     color: $color2;
   }
 
-  tr:hover{
+  tr:hover {
     background-color: $color5;
     color: $textLight;
   }
+
   tr:active {
     background-color: #00c5dc;
     color: $textLight;
@@ -250,9 +256,9 @@
 }
 
 #table-box-user__body {
- tr {
-   grid-template-columns: 20% 10% 10% 20% 20% 10% 10%;
- }
+  tr {
+    grid-template-columns: 20% 10% 10% 20% 20% 10% 10%;
+  }
 }
 
 
@@ -266,9 +272,9 @@
 
 .table-searchbox__search {
   outline: none;
-  border:none;
+  border: none;
   border-radius: $borderRadius;
-  box-shadow:$boxShadow;
+  box-shadow: $boxShadow;
   padding: 5px;
   //margin-bottom: 5px;
 }
@@ -280,13 +286,14 @@
   color: $iconsSelected;
   padding: 5px;
   border-radius: $borderRadius;
+
   i {
     font-size: 20px;
   }
 }
 
 
-.cntActive{
+.cntActive {
   display: grid;
 }
 
