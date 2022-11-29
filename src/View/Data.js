@@ -257,7 +257,7 @@ async function sendMessageTwilio(btnSend) {
                 alertMsjBody.innerText = 'No hay usuarios seleccionados';
             } else {
                 for (let i = 0; i < idsForms.length; i++) {
-                    links.push("https://www.miniforms/client/form/?form_id=".concat(idsForms[i]))
+                    links.push("https://miniforms-client.herokuapp.com/form/?form_id=".concat(idsForms[i]))
                 }
 
                 let messageFull = msj.value;
